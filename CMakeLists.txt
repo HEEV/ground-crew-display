@@ -3,6 +3,9 @@ cmake_minimum_required(VERSION 3.15)
 project(GroundCrewDisplay VERSION 0.0.1)
 add_subdirectory(lib)
 
+# Disable this when building
+add_compile_definitions(DEBUG)
+
 # If your app depends the VST2 SDK, perhaps to host VST2 plugins, CMake needs to be told where
 # to find the SDK on your system. This setup should be done before calling `juce_add_gui_app`.
 

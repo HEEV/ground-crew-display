@@ -2,14 +2,15 @@
 #include <string>
 #include <chrono>
 #include <iostream>
+#include <stdio.h>
 
-//==============================================================================
-MainComponent::MainComponent() {
+// Main JUCE component
+MainComponent::MainComponent()
+{
+  setSize(getParentWidth(), getParentHeight());
+  setFramesPerSecond(30);
 
-    addMouseListener(&_mouse, true);
-    
-    setSize(getParentWidth(), getParentHeight());
-    setFramesPerSecond(30);
+  addMouseListener(&_mouse, true);
 }
 
 void MainComponent::update()
@@ -20,19 +21,17 @@ MainComponent::~MainComponent()
 {
 }
 
-//==============================================================================
-//Function exicuts every frame
-void MainComponent::paint (juce::Graphics& g)
+// Function executes every frame
+void MainComponent::paint(juce::Graphics &g)
 {
-    g.fillAll(getLookAndFeel().findColour(DocumentWindow::backgroundColourId));
+  g.fillAll(getLookAndFeel().findColour(DocumentWindow::backgroundColourId));
 }
 
 void MainComponent::resized()
 {
-  
 }
 
-void MainComponent::MouseEvents::mouseDoubleClick(const MouseEvent& e)
+void MainComponent::MouseEvents::mouseDoubleClick(const MouseEvent &e)
 {
-    JUCEApplicationBase::quit();
+  JUCEApplicationBase::quit();
 }

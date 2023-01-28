@@ -1,28 +1,20 @@
 #pragma once
 
 #include <JuceHeader.h>
-#include <fstream>
 
-//==============================================================================
-/*
-    This component lives inside our window, and this is where you should put all
-    your controls and content.
-*/
 class MainComponent  : public juce::AnimatedAppComponent
 {
 public:
-    //==============================================================================
     MainComponent();
     ~MainComponent() override;
 
-    //==============================================================================
     void paint (juce::Graphics&) override;
     void resized() override;
     void update() override;
-    
-    //DataValues Storage;
 
 private:
+
+    // See https://docs.juce.com/master/classMouseListener.html for mouse events
     class MouseEvents : public MouseListener
     {
     public:

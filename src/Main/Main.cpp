@@ -1,34 +1,25 @@
-/*
-  ==============================================================================
-
-    This file contains the basic startup code for a JUCE application.
-
-  ==============================================================================
-*/
-
 #include <JuceHeader.h>
 #include <locale>
 #include "Main/MainComponent.h"
 
-#include <profile.h>
-
 constexpr int WIDTH = 1024;
 constexpr int HEIGHT = 600;
 
-//==============================================================================
+/**
+ * Main application handler.
+ */
 class GroundCrewDisplay : public juce::JUCEApplication
 {
 public:
-  //==============================================================================
+
   GroundCrewDisplay() {}
   const juce::String getApplicationName() override { return ProjectInfo::projectName; }
   const juce::String getApplicationVersion() override { return ProjectInfo::versionString; }
   bool moreThanOneInstanceAllowed() override { return false; }
 
-  //==============================================================================
+  // This method is where you should put your application's initialization code
   void initialise(const juce::String &commandLine) override
   {
-    // This method is where you should put your application's initialisation code..
     mainWindow.reset(new MainWindow(getApplicationName()));
   }
 
@@ -37,7 +28,6 @@ public:
     mainWindow = nullptr;
   }
 
-  //==============================================================================
   void systemRequestedQuit() override
   {
     quit();
@@ -47,11 +37,6 @@ public:
   { /*Do nothing*/
   }
 
-  //==============================================================================
-  /*
-      This class implements the desktop window that contains an instance of
-      our MainComponent class.
-  */
   class MainWindow : public juce::DocumentWindow
   {
   public:
@@ -79,9 +64,6 @@ public:
       getContentComponent()->setBoundsRelative(0.0f, 0.0f, 1.0f, 1.0f);
 
       Desktop::getInstance().setScreenSaverEnabled(false);
-
-      // Set locale for our formatting lib
-      std::locale::global(std::locale("en_US.UTF-8"));
 
       setVisible(true);
     }

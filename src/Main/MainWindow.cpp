@@ -1,17 +1,10 @@
-/*
- * This file contains 
- */
-
 #include <JuceHeader.h>
 #include "Main/MainComponent.h"
 
-//==============================================================================
 class MainWindowTutorialApplication : public juce::JUCEApplication
 {
 public:
-  //...
 
-  //==============================================================================
   class MainWindow : public juce::DocumentWindow
   {
   public:
