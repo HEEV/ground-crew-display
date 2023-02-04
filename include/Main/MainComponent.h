@@ -1,8 +1,9 @@
 #pragma once
 
 #include <JuceHeader.h>
+#include "Widgets/Speedometer.h"
 
-class MainComponent : public juce::AnimatedAppComponent
+class MainComponent : public juce::Component
 {
 public:
   MainComponent();
@@ -10,9 +11,10 @@ public:
 
   void paint(juce::Graphics &) override;
   void resized() override;
-  void update() override;
 
 private:
+  Speedometer _wind;
+
   // See https://docs.juce.com/master/classMouseListener.html for mouse events
   class MouseEvents : public MouseListener
   {

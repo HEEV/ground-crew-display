@@ -5,17 +5,26 @@
 #include <stdio.h>
 
 // Main JUCE component
-MainComponent::MainComponent()
+MainComponent::MainComponent() : _wind("Wind MPH", 0.0f, 40.0f, Colour(253, 185, 19))
 {
+  addAndMakeVisible(_wind);
+  _wind.setData(20.0f);
+
   setSize(getParentWidth(), getParentHeight());
-  setFramesPerSecond(30);
+  // setFramesPerSecond(30);
 
   addMouseListener(&_mouse, true);
 }
 
-void MainComponent::update()
-{
-}
+// void MainComponent::update()
+// {
+//   static float randWind = 0.0f;
+
+//   _wind.setData(20.0f + randWind);
+
+//   Random &rand = Random::getSystemRandom();
+//   randWind += rand.nextFloat() * -(rand.nextBool() * 2 - 1);
+// }
 
 MainComponent::~MainComponent()
 {
@@ -31,8 +40,8 @@ void MainComponent::resized()
 {
 }
 
-void MainComponent::MouseEvents::mouseDown(const MouseEvent &e) {
-
+void MainComponent::MouseEvents::mouseDown(const MouseEvent &e)
+{
 }
 
 void MainComponent::MouseEvents::mouseDoubleClick(const MouseEvent &e)
