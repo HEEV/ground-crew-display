@@ -1,3 +1,6 @@
 [submodule "lib/JUCE"]
 	path = lib/JUCE
 	url = https://github.com/juce-framework/JUCE.git
+[submodule "lib/Fast-DDS-Communication-Manager"]
+	path = lib/Fast-DDS-Communication-Manager
+	url = https://github.com/HEEV/Fast-DDS-Communication-Manager.git

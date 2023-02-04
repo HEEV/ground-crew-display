@@ -12,3 +12,9 @@ _deps
 
 .DS_Store
 GroundCrewDisplay_artefacts
+
+CPackConfig.cmake
+CPackSourceConfig.cmake
+
+.vscode/
+build/

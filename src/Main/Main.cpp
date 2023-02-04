@@ -1,6 +1,8 @@
 #include <JuceHeader.h>
 #include <locale>
 #include "Main/MainComponent.h"
+#include "CommunicationManager.h"
+#include "Packets.h"
 
 constexpr int WIDTH = 1024;
 constexpr int HEIGHT = 600;

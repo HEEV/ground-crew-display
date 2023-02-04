@@ -2,24 +2,24 @@
 
 #include <JuceHeader.h>
 
-class MainComponent  : public juce::AnimatedAppComponent
+class MainComponent : public juce::AnimatedAppComponent
 {
 public:
-    MainComponent();
-    ~MainComponent() override;
+  MainComponent();
+  ~MainComponent() override;
 
-    void paint (juce::Graphics&) override;
-    void resized() override;
-    void update() override;
+  void paint(juce::Graphics &) override;
+  void resized() override;
+  void update() override;
 
 private:
+  // See https://docs.juce.com/master/classMouseListener.html for mouse events
+  class MouseEvents : public MouseListener
+  {
+  public:
+    void mouseDown(const MouseEvent &e) override;
+    void mouseDoubleClick(const MouseEvent &e) override;
+  } _mouse;
 
-    // See https://docs.juce.com/master/classMouseListener.html for mouse events
-    class MouseEvents : public MouseListener
-    {
-    public:
-        void mouseDoubleClick(const MouseEvent& e) override;
-    } _mouse;
-
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainComponent)
+  JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainComponent)
 };

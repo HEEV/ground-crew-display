@@ -31,6 +31,10 @@ void MainComponent::resized()
 {
 }
 
+void MainComponent::MouseEvents::mouseDown(const MouseEvent &e) {
+
+}
+
 void MainComponent::MouseEvents::mouseDoubleClick(const MouseEvent &e)
 {
   JUCEApplicationBase::quit();

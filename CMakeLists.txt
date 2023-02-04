@@ -80,4 +80,5 @@ target_link_libraries(GroundCrewDisplay
     PUBLIC
         juce::juce_recommended_config_flags
         juce::juce_recommended_lto_flags
+        CommunicationManager
 )
