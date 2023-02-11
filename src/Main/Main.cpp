@@ -22,6 +22,8 @@ public:
   // This method is where you should put your application's initialization code
   void initialise(const juce::String &commandLine) override
   {
+    // cmanager = CommunicationManager("", false);
+
     mainWindow.reset(new MainWindow(getApplicationName()));
   }
 
@@ -54,7 +56,7 @@ public:
       llf.setColour(DocumentWindow::backgroundColourId, getBackgroundColour());
       llf.setColour(ColourIds::textColourId, Colours::black);
 
-      // Forces GUI to be fullscreen in the car, but remain windowed for development
+      // Forces GUI to be fullscreen when not debugging, but remain windowed for development
 #ifdef DEBUG
       setResizable(true, true);
       centreWithSize(WIDTH, HEIGHT);
@@ -90,6 +92,7 @@ public:
   };
 
 private:
+  CommunicationManager* cmanager;
   std::unique_ptr<MainWindow> mainWindow;
 };
 

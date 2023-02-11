@@ -9,7 +9,7 @@ Speedometer::Speedometer(std::string_view name, float minData, float maxData, ju
 	_color(color), _lineWidth(lineWidth), _subdivisions(subdivisions), _lc(nullptr)
 {
 	setData(_dataMin);
-	setFramesPerSecond(30);
+	setFramesPerSecond(FRAMERATE);
 }
 
 Speedometer::~Speedometer() {

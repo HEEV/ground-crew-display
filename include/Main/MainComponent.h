@@ -2,6 +2,7 @@
 
 #include <JuceHeader.h>
 #include "Widgets/Speedometer.h"
+#include "Widgets/TimeGraph.h"
 
 class MainComponent : public juce::AnimatedAppComponent
 {
@@ -15,6 +16,7 @@ public:
 
 private:
   Speedometer _wind;
+  TimeGraph _windGraph;
 
   // See https://docs.juce.com/master/classMouseListener.html for mouse events
   class MouseEvents : public MouseListener
