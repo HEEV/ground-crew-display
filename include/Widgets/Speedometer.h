@@ -13,7 +13,7 @@
  * .
  * @implements AnimatedAppComponent
  */
-class Speedometer : public AnimatedAppComponent
+class Speedometer : public juce::AnimatedAppComponent
 {
 public:
 	Speedometer(std::string_view name, float minData, float maxData, juce::Colour color, int subdivisions = 8, int lineWidth = 5);

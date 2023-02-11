@@ -18,7 +18,7 @@ Speedometer::~Speedometer() {
 
 void Speedometer::paint(juce::Graphics& g) 
 {
-	auto bounds = getLocalBounds();
+  auto bounds = getLocalBounds();
 	//explicit background color for animated components
 	g.fillAll(getLookAndFeel().findColour(DocumentWindow::backgroundColourId));
 	Font f("Consolas", FONT_HEIGHT, juce::Font::bold);
@@ -135,8 +135,6 @@ void Speedometer::setDataRange(float min, float max) {
 
 void Speedometer::setData(float value) {
 	value = std::min(_dataMax, std::max(_dataMin, value));
-
-	value = 15;
 
 	_data = value;
 

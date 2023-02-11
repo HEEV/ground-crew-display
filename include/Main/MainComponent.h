@@ -3,12 +3,13 @@
 #include <JuceHeader.h>
 #include "Widgets/Speedometer.h"
 
-class MainComponent : public juce::Component
+class MainComponent : public juce::AnimatedAppComponent
 {
 public:
   MainComponent();
   ~MainComponent() override;
 
+  void update() override;
   void paint(juce::Graphics &) override;
   void resized() override;
 
