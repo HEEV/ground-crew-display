@@ -3,10 +3,15 @@
 #include <math.h>
 #include <sstream>
 
-#define H_PADDING 60
+#define H_PADDING 50
 #define V_PADDING 30
 
-TimeGraph::TimeGraph(size_t size, bool dropBounds) : _size(size), _dropBounds(dropBounds)
+TimeGraph::TimeGraph(size_t size, bool dropBounds) : _size(size), _dropBounds(dropBounds), _fixedBounds(false)
+{
+  setFramesPerSecond(FRAMERATE);
+}
+
+TimeGraph::TimeGraph(size_t size, float min, float max) : _size(size), _dropBounds(false), _fixedMin(min), _fixedMax(max), _fixedBounds(true)
 {
   setFramesPerSecond(FRAMERATE);
 }
@@ -29,14 +34,20 @@ void TimeGraph::paint(juce::Graphics &g)
 
   std::stringstream minStream;
   std::stringstream maxStream;
-
   minStream << std::fixed << std::setprecision(2) << min;
   maxStream << std::fixed << std::setprecision(2) << max;
-
   g.drawText(minStream.str(), 0, (bounds.getHeight() - V_PADDING) / 2, H_PADDING - 2, (bounds.getHeight() - V_PADDING) / 2, juce::Justification::bottomRight);
   g.drawText(maxStream.str(), 0, 0, H_PADDING - 2, (bounds.getHeight() - V_PADDING) / 2, juce::Justification::topRight);
 
+
+  if (_data.size() == 0)
+  {
+    g.setColour(juce::Colours::darkred);
+    g.drawText("<no data>", H_PADDING, 0, bounds.getWidth() - H_PADDING, bounds.getHeight() - V_PADDING, juce::Justification::centred);
+  }
+
   g.setColour(juce::Colours::blue);
+
 
   // i is for data counting, j is where the point is on the screen, when _data.size() >= _size, i == j
   juce::Point<float> lastPoint;
@@ -44,7 +55,7 @@ void TimeGraph::paint(juce::Graphics &g)
   for (size_t i = 0; i < _data.size(); ++i, ++j)
   {
     float x = (((float)j) / _size) * (bounds.getWidth() - H_PADDING) + H_PADDING;
-    float y = ((_data[i] - min) / (max - min)) * (bounds.getHeight() - V_PADDING);
+    float y = ((max - (std::max<float>(_data[i], min))) / (max - min)) * (bounds.getHeight() - V_PADDING);
 
     Point<float> newPoint = juce::Point<float>(x, y);
     if (i == 0)
@@ -118,6 +129,12 @@ void TimeGraph::addData(float newPoint)
     {
       _min = _totalMin;
       _max = _totalMax;
+    }
+
+    if (_fixedBounds)
+    {
+      _min = _fixedMin;
+      _max = _fixedMax;
     }
   }
 

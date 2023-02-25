@@ -3,6 +3,9 @@
 #include "Main/MainComponent.h"
 #include "CommunicationManager.h"
 #include "Packets.h"
+#include <string>
+
+#define DDS_SERVER_IP "163.11.237.241:5000"
 
 constexpr int WIDTH = 1024;
 constexpr int HEIGHT = 600;
@@ -15,15 +18,17 @@ class GroundCrewDisplay : public juce::JUCEApplication
 public:
 
   GroundCrewDisplay() {}
+  ~GroundCrewDisplay() {
+    // delete cmanager;
+  }
+
   const juce::String getApplicationName() override { return ProjectInfo::projectName; }
   const juce::String getApplicationVersion() override { return ProjectInfo::versionString; }
   bool moreThanOneInstanceAllowed() override { return false; }
 
-  // This method is where you should put your application's initialization code
   void initialise(const juce::String &commandLine) override
   {
-    // cmanager = CommunicationManager("", false);
-
+    // cmanager = new CommunicationManager(DDS_SERVER_IP, false);
     mainWindow.reset(new MainWindow(getApplicationName()));
   }
 

@@ -21,7 +21,12 @@ void Speedometer::paint(juce::Graphics& g)
   auto bounds = getLocalBounds();
 	//explicit background color for animated components
 	g.fillAll(getLookAndFeel().findColour(DocumentWindow::backgroundColourId));
-	Font f("Consolas", FONT_HEIGHT, juce::Font::bold);
+
+  // Debug rect
+  // g.setColour(Colours::red);
+  // g.drawRect(bounds);
+
+  Font f("Consolas", FONT_HEIGHT, juce::Font::bold);
 	g.setFont(f);
 	g.setColour(Colours::black);
 	PathStrokeType stroke(LINE_WEIGHT);
@@ -36,8 +41,8 @@ void Speedometer::paint(juce::Graphics& g)
 		auto label = bounds.removeFromBottom(heightToRemove);
 
 		//Use extra space to add label
-		/*if(label.getHeight() >= FONT_HEIGHT)
-			g.drawText(_name, label, Justification::centredTop);*/
+		if(label.getHeight() >= FONT_HEIGHT)
+			g.drawText(_name, label, Justification::centredBottom);
 	}
 	else if(7 * bounds.getWidth() / 8 > bounds.getHeight())
 	{
@@ -54,11 +59,6 @@ void Speedometer::paint(juce::Graphics& g)
 	Point start = bounds.getTopLeft().toFloat();
 	start.addXY(LINE_WEIGHT / 2.0f, LINE_WEIGHT / 2.0f);
 	float diameter = bounds.getWidth() - LINE_WEIGHT;
-
-	// debug rectangle
-	g.setColour(Colours::red);
-	g.drawRect(start.x, start.y, diameter, diameter, 3.0f);
-	g.setColour(Colours::black);
 	
 	g.drawEllipse(start.x, start.y, diameter, diameter, LINE_WEIGHT / 2);
 	//arc.addArc(start.x, start.y, diameter, diameter, -3 * PI / 4, 3 * PI / 4, true);
@@ -77,7 +77,7 @@ void Speedometer::paint(juce::Graphics& g)
 	{
 		Point<float> p(
 			labelDiameter / 2.0f * cos(i * (3 * PI / 2) / _subdivisions + 3 * PI / 4) + labelCenter.x,
-			labelDiameter / 2.0f * sin(i * (3 * PI / 2) / _subdivisions + 3 * PI / 4) + labelCenter.y
+			labelDiameter / 2.0f * sin(i * (3 * PI / 2) / _subdivisions + 3 * PI / 4) + labelCenter.y + 5
 		);
 		
 		String label = fmt::format("{:.0f}", i * labelMultiple + _dataMin);
@@ -95,8 +95,8 @@ void Speedometer::paint(juce::Graphics& g)
 	String readout = fmt::format("{:.1f}", _data);
 	float readoutWidth = f.getStringWidthFloat(readout);
 	readoutArea.setSize(readoutWidth, FONT_HEIGHT);
-	readoutArea.setCentre(labelCenter.x, labelCenter.y + FONT_HEIGHT);
-	g.drawText(readout, readoutArea, Justification::centred);
+	readoutArea.setCentre(labelCenter.x, labelCenter.y + FONT_HEIGHT + 5);
+	g.drawText(readout, readoutArea, Justification::centredBottom);
 
 	//Draw hand
 	constexpr float baseWidth = 20.0f;

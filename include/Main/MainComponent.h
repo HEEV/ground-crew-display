@@ -3,6 +3,7 @@
 #include <JuceHeader.h>
 #include "Widgets/Speedometer.h"
 #include "Widgets/TimeGraph.h"
+#include "Widgets/MapComponent.h"
 
 class MainComponent : public juce::AnimatedAppComponent
 {
@@ -17,6 +18,13 @@ public:
 private:
   Speedometer _wind;
   TimeGraph _windGraph;
+
+  Speedometer _speed;
+  TimeGraph _speedGraph;
+
+  MapComponent _map;
+
+  TimeGraph _engTemp;
 
   // See https://docs.juce.com/master/classMouseListener.html for mouse events
   class MouseEvents : public MouseListener
