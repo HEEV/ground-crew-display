@@ -1,5 +1,7 @@
 #include "Widgets/TimeGraph.h"
 #include <algorithm>
+#include <math.h>
+#include <sstream>
 
 #define H_PADDING 60
 #define V_PADDING 30
@@ -22,8 +24,17 @@ void TimeGraph::paint(juce::Graphics &g)
   g.drawText(std::to_string(_size / FRAMERATE) + "s", H_PADDING, bounds.getHeight() - V_PADDING, (bounds.getWidth() - H_PADDING) / 2, V_PADDING, juce::Justification::centredLeft);
   g.drawText("now", H_PADDING + (bounds.getWidth() - H_PADDING) / 2, bounds.getHeight() - V_PADDING, (bounds.getWidth() - H_PADDING) / 2, V_PADDING, juce::Justification::centredRight);
 
-  g.drawText(std::to_string(_min), 0, (bounds.getHeight() - V_PADDING) / 2, H_PADDING - 2, (bounds.getHeight() - V_PADDING) / 2, juce::Justification::bottomRight);
-  g.drawText(std::to_string(_max), 0, 0, H_PADDING - 2, (bounds.getHeight() - V_PADDING) / 2, juce::Justification::topRight);
+  float min = round(_min * 100) / 100;
+  float max = round(_max * 100) / 100;
+
+  std::stringstream minStream;
+  std::stringstream maxStream;
+
+  minStream << std::fixed << std::setprecision(2) << min;
+  maxStream << std::fixed << std::setprecision(2) << max;
+
+  g.drawText(minStream.str(), 0, (bounds.getHeight() - V_PADDING) / 2, H_PADDING - 2, (bounds.getHeight() - V_PADDING) / 2, juce::Justification::bottomRight);
+  g.drawText(maxStream.str(), 0, 0, H_PADDING - 2, (bounds.getHeight() - V_PADDING) / 2, juce::Justification::topRight);
 
   g.setColour(juce::Colours::blue);
 
@@ -33,7 +44,7 @@ void TimeGraph::paint(juce::Graphics &g)
   for (size_t i = 0; i < _data.size(); ++i, ++j)
   {
     float x = (((float)j) / _size) * (bounds.getWidth() - H_PADDING) + H_PADDING;
-    float y = ((_data[i] - _min) / (_max - _min)) * (bounds.getHeight() - V_PADDING);
+    float y = ((_data[i] - min) / (max - min)) * (bounds.getHeight() - V_PADDING);
 
     Point<float> newPoint = juce::Point<float>(x, y);
     if (i == 0)
@@ -48,7 +59,7 @@ void TimeGraph::paint(juce::Graphics &g)
     }
   }
 
-    g.setColour(juce::Colours::black);
+  g.setColour(juce::Colours::black);
   juce::Line<float> horizLine(juce::Point<float>(H_PADDING, 0),
                               juce::Point<float>(H_PADDING, bounds.getHeight() - V_PADDING));
   juce::Line<float> vertLine(juce::Point<float>(H_PADDING, bounds.getHeight() - V_PADDING),
@@ -102,8 +113,9 @@ void TimeGraph::addData(float newPoint)
     {
       _totalMax = _max;
     }
-    
-    if (!_dropBounds){
+
+    if (!_dropBounds)
+    {
       _min = _totalMin;
       _max = _totalMax;
     }
