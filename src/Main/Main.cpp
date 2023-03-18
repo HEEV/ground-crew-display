@@ -1,106 +1,79 @@
-#include <JuceHeader.h>
 #include <locale>
-#include "Main/MainComponent.h"
-#include "CommunicationManager.h"
+#include "Main/Main.h"
+#include "Pages/MainPage.h"
 #include "Packets.h"
 #include <string>
 
-#define DDS_SERVER_IP "163.11.237.241:5000"
-
-constexpr int WIDTH = 1024;
-constexpr int HEIGHT = 600;
-
-/**
- * Main application handler.
- */
-class GroundCrewDisplay : public juce::JUCEApplication
+GroundCrewDisplay::GroundCrewDisplay()
 {
-public:
+}
 
-  GroundCrewDisplay() {}
-  ~GroundCrewDisplay() {
-    // delete cmanager;
-  }
+GroundCrewDisplay::~GroundCrewDisplay()
+{
+  // delete cmanager;
+}
 
-  const juce::String getApplicationName() override { return ProjectInfo::projectName; }
-  const juce::String getApplicationVersion() override { return ProjectInfo::versionString; }
-  bool moreThanOneInstanceAllowed() override { return false; }
+void GroundCrewDisplay::initialise(const juce::String &commandLine)
+{
+  // cmanager = new CommunicationManager(DDS_SERVER_IP, false);
+  mainWindow.reset(new MainWindow(getApplicationName()));
+}
 
-  void initialise(const juce::String &commandLine) override
-  {
-    // cmanager = new CommunicationManager(DDS_SERVER_IP, false);
-    mainWindow.reset(new MainWindow(getApplicationName()));
-  }
+void GroundCrewDisplay::shutdown()
+{
+  mainWindow = nullptr;
+}
 
-  void shutdown() override
-  {
-    mainWindow = nullptr;
-  }
+void GroundCrewDisplay::systemRequestedQuit()
+{
+  quit();
+}
 
-  void systemRequestedQuit() override
-  {
-    quit();
-  }
+void GroundCrewDisplay::anotherInstanceStarted(const juce::String &commandLine)
+{
+  /* Do nothing */
+}
 
-  void anotherInstanceStarted(const juce::String &commandLine) override
-  { /*Do nothing*/
-  }
+GroundCrewDisplay::MainWindow::MainWindow(juce::String name)
+    : DocumentWindow(name,
+                     Colours::grey,
+                     DocumentWindow::closeButton)
+{
+  mainPage = new MainPage(this);
 
-  class MainWindow : public juce::DocumentWindow
-  {
-  public:
-    MainWindow(juce::String name)
-        : DocumentWindow(name,
-                         Colours::grey,
-                         DocumentWindow::closeButton)
-    {
-      setUsingNativeTitleBar(false);
-      setContentOwned(new MainComponent(), true);
+  setUsingNativeTitleBar(true);
 
-      auto &llf = getLookAndFeel();
-      llf.setColour(DocumentWindow::backgroundColourId, getBackgroundColour());
-      llf.setColour(ColourIds::textColourId, Colours::black);
+  setContentNonOwned(mainPage, true);
 
-      // Forces GUI to be fullscreen when not debugging, but remain windowed for development
+  auto &llf = getLookAndFeel();
+  llf.setColour(DocumentWindow::backgroundColourId, getBackgroundColour());
+  llf.setColour(ColourIds::textColourId, Colours::black);
+
+  // Forces GUI to be fullscreen when not debugging, but remain windowed for development
 #ifdef DEBUG
-      setResizable(true, true);
-      centreWithSize(WIDTH, HEIGHT);
+  setResizable(true, true);
+  centreWithSize(WIDTH, HEIGHT);
 #else
-      setResizable(false, false);
-      Desktop::getInstance().setKioskModeComponent(this, false);
+  setResizable(false, false);
+  Desktop::getInstance().setKioskModeComponent(this, false);
 #endif
 
-      getContentComponent()->setBoundsRelative(0.0f, 0.0f, 1.0f, 1.0f);
+  getContentComponent()->setBoundsRelative(0.0f, 0.0f, 1.0f, 1.0f);
 
-      Desktop::getInstance().setScreenSaverEnabled(false);
+  Desktop::getInstance().setScreenSaverEnabled(false);
 
-      setVisible(true);
-    }
+  setVisible(true);
+}
 
-    void closeButtonPressed() override
-    {
-      // This is called when the user tries to close this window. Here, we'll just
-      // ask the app to quit when this happens, but you can change this to do
-      // whatever you need.
-      JUCEApplication::getInstance()->systemRequestedQuit();
-    }
+GroundCrewDisplay::MainWindow::~MainWindow()
+{
+  delete mainPage;
+}
 
-    /* Note: Be careful if you override any DocumentWindow methods - the base
-       class uses a lot of them, so by overriding you might break its functionality.
-       It's best to do all your work in your content component instead, but if
-       you really have to override any DocumentWindow methods, make sure your
-       subclass also calls the superclass's method.
-    */
+void GroundCrewDisplay::MainWindow::closeButtonPressed()
+{
+  JUCEApplication::getInstance()->systemRequestedQuit();
+}
 
-  private:
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainWindow)
-  };
-
-private:
-  CommunicationManager* cmanager;
-  std::unique_ptr<MainWindow> mainWindow;
-};
-
-//==============================================================================
-// This macro generates the main() routine that launches the app.
+// Launch the app
 START_JUCE_APPLICATION(GroundCrewDisplay)

@@ -4,18 +4,22 @@
 #include "Widgets/Speedometer.h"
 #include "Widgets/TimeGraph.h"
 #include "Widgets/MapComponent.h"
+#include "Main/Main.h"
+#include "Main/PageSwitchComponent.h"
 
-class MainComponent : public juce::AnimatedAppComponent
+class MainPage : public juce::AnimatedAppComponent
 {
 public:
-  MainComponent();
-  ~MainComponent() override;
+  MainPage(GroundCrewDisplay::MainWindow* window);
+  ~MainPage() override;
 
   void update() override;
   void paint(juce::Graphics &) override;
   void resized() override;
 
 private:
+  GroundCrewDisplay::MainWindow *mainWindow;
+
   Speedometer _wind;
   TimeGraph _windGraph;
 
@@ -26,6 +30,8 @@ private:
 
   TimeGraph _engTemp;
 
+  PageSwitchComponent _pageSwitcher; 
+
   // See https://docs.juce.com/master/classMouseListener.html for mouse events
   class MouseEvents : public MouseListener
   {
@@ -34,5 +40,5 @@ private:
     void mouseDoubleClick(const MouseEvent &e) override;
   } _mouse;
 
-  JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainComponent)
+  JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainPage)
 };
