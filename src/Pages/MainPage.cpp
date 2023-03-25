@@ -3,11 +3,12 @@
 #include <chrono>
 #include <iostream>
 #include <stdio.h>
+#include "Main/ActivePage.h"
 
 // Main JUCE component
 MainPage::MainPage(GroundCrewDisplay::MainWindow* window) : mainWindow(window), _wind("Wind MPH", 0.0f, 40.0f, Colour(253, 185, 19)), _windGraph(FRAMERATE * 5, 0.0f, 40.0f),
                                  _map("Tracks/ShellTrack.svg", 1.0f), _engTemp(FRAMERATE * 20), 
-                                 _speed("Vehicle MPH", 0.0f, 40.0f, Colour(253, 185, 19), 6), _speedGraph(FRAMERATE * 5, 0.0f, 40.0f), _pageSwitcher(window)
+                                 _speed("Vehicle MPH", 0.0f, 40.0f, Colour(253, 185, 19), 6), _speedGraph(FRAMERATE * 5, 0.0f, 40.0f), _pageSwitcher(window, ActivePage::MainPage)
 {
   addAndMakeVisible(_wind);
   addAndMakeVisible(_windGraph);
@@ -28,8 +29,6 @@ MainPage::MainPage(GroundCrewDisplay::MainWindow* window) : mainWindow(window), 
 
   setSize(getParentWidth(), getParentHeight());
   setFramesPerSecond(FRAMERATE);
-
-  addMouseListener(&_mouse, true);
 }
 
 void MainPage::update()
@@ -74,13 +73,4 @@ void MainPage::resized()
   _map.setBounds(0, getHeight() - 150, 300, 150);
 
   _pageSwitcher.setBounds(getWidth() - 100, 0, 100, 100);
-}
-
-void MainPage::MouseEvents::mouseDown(const MouseEvent &e)
-{
-}
-
-void MainPage::MouseEvents::mouseDoubleClick(const MouseEvent &e)
-{
-  JUCEApplicationBase::quit();
 }

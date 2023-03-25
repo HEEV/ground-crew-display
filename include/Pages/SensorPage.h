@@ -7,11 +7,11 @@
 #include "Main/Main.h"
 #include "Main/PageSwitchComponent.h"
 
-class MainPage : public juce::AnimatedAppComponent
+class SensorPage : public juce::AnimatedAppComponent
 {
 public:
-  MainPage(GroundCrewDisplay::MainWindow* window);
-  ~MainPage() override;
+  SensorPage(GroundCrewDisplay::MainWindow *window);
+  ~SensorPage() override;
 
   void update() override;
   void paint(juce::Graphics &) override;
@@ -23,14 +23,7 @@ private:
   Speedometer _wind;
   TimeGraph _windGraph;
 
-  Speedometer _speed;
-  TimeGraph _speedGraph;
+  PageSwitchComponent _pageSwitcher;
 
-  MapComponent _map;
-
-  TimeGraph _engTemp;
-
-  PageSwitchComponent _pageSwitcher; 
-
-  JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainPage)
+  JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SensorPage)
 };

@@ -5,18 +5,15 @@
 #include <locale>
 #include "Packets.h"
 #include <string>
+#include "ActivePage.h"
 
 class MainPage;
+class SensorPage;
 
 #define DDS_SERVER_IP "163.11.237.241:5000"
 
 constexpr int WIDTH = 1024;
 constexpr int HEIGHT = 600;
-
-enum class ActivePage
-{
-  MainPage
-};
 
 /**
  * Main application handler.
@@ -25,7 +22,6 @@ class GroundCrewDisplay : public juce::JUCEApplication
 {
 public:
   GroundCrewDisplay();
-
   ~GroundCrewDisplay();
 
   const juce::String getApplicationName() override { return ProjectInfo::projectName; }
@@ -33,24 +29,24 @@ public:
   bool moreThanOneInstanceAllowed() override { return false; }
 
   void initialise(const juce::String &commandLine) override;
-
   void shutdown() override;
-
   void systemRequestedQuit() override;
-
   void anotherInstanceStarted(const juce::String &commandLine) override;
 
   class MainWindow : public juce::DocumentWindow
   {
   public:
     MainWindow(juce::String name);
-
     ~MainWindow();
 
     void closeButtonPressed() override;
 
+    void setPage(ActivePage page);
+
   private:
     juce::Component *mainPage;
+    juce::Component *sensorPage;
+
     ActivePage _currentComponent = ActivePage::MainPage;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainWindow)
