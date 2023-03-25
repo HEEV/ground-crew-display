@@ -1,34 +1,28 @@
 #pragma once
 #include <JuceHeader.h>
 #include <deque>
+#include "Main/DoubleDataSource.h"
+#include <stdint.h>
 
 class TimeGraph : public juce::AnimatedAppComponent
 {
 public:
-  TimeGraph(size_t size, bool dropBounds = true);
-  TimeGraph(size_t size, float min, float max);
+  TimeGraph(DoubleDataSource* source, bool dropBounds = true, uint64_t duration = UINT64_MAX);
+  TimeGraph(DoubleDataSource* source, float min, float max, uint64_t duration = UINT64_MAX);
   ~TimeGraph() override;
 
   void paint(juce::Graphics& g) override;
 	void resized() override { }
 	void update() override { }
 
-  void clear();
-  void addData(float newPoint);
-
 private:
-  size_t _size;
-  std::deque<float> _data = std::deque<float>();
+  DoubleDataSource* source;
 
-  bool _dropBounds;
-  bool _fixedBounds;
+  uint64_t duration;
 
-  float _fixedMin = -1;
-  float _fixedMax = -1;
+  bool dropBounds;
 
-  float _totalMin = 0;
-  float _totalMax = 1;
-
-  float _min = 0;
-  float _max = 1;
+  bool fixedBounds;
+  float fixedMin;
+  float fixedMax;
 };

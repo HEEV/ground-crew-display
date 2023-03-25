@@ -4,11 +4,12 @@
 #include <iostream>
 #include <stdio.h>
 #include "Main/ActivePage.h"
+#include "Main/Sources.h"
 
 // Main JUCE component
-MainPage::MainPage(GroundCrewDisplay::MainWindow* window) : mainWindow(window), _wind("Wind MPH", 0.0f, 40.0f, Colour(253, 185, 19)), _windGraph(FRAMERATE * 5, 0.0f, 40.0f),
-                                 _map("Tracks/ShellTrack.svg", 1.0f), _engTemp(FRAMERATE * 20), 
-                                 _speed("Vehicle MPH", 0.0f, 40.0f, Colour(253, 185, 19), 6), _speedGraph(FRAMERATE * 5, 0.0f, 40.0f), _pageSwitcher(window, ActivePage::MainPage)
+MainPage::MainPage(GroundCrewDisplay::MainWindow *window) : mainWindow(window), _wind("Wind MPH", 0.0f, 40.0f, Colour(253, 185, 19)), _windGraph(&Sources::wind, 0.0f, 40.0f),
+                                                            _map("Tracks/ShellTrack.svg", 1.0f), _engTemp(&Sources::engTemp, true),
+                                                            _speed("Vehicle MPH", 0.0f, 40.0f, Colour(253, 185, 19), 6), _speedGraph(&Sources::speed, false, 20000), _pageSwitcher(window, ActivePage::MainPage)
 {
   addAndMakeVisible(_wind);
   addAndMakeVisible(_windGraph);
@@ -21,11 +22,22 @@ MainPage::MainPage(GroundCrewDisplay::MainWindow* window) : mainWindow(window), 
 
   addAndMakeVisible(_pageSwitcher);
 
-  _wind.setData(20.0f);
-  _windGraph.addData(20.0f);
+  Sources::speed.addData(duration_cast<std::chrono::milliseconds>(
+                             std::chrono::system_clock::now().time_since_epoch())
+                             .count(),
+                         20.0f);
+  _speed.setData(Sources::speed.last());
 
-  _speedGraph.addData(20.0f);
-  _speed.setData(20.0f);
+  Sources::engTemp.addData(duration_cast<std::chrono::milliseconds>(
+                               std::chrono::system_clock::now().time_since_epoch())
+                               .count(),
+                           451.0f);
+
+  Sources::wind.addData(duration_cast<std::chrono::milliseconds>(
+                            std::chrono::system_clock::now().time_since_epoch())
+                            .count(),
+                        20.0f);
+  _wind.setData(Sources::wind.last());
 
   setSize(getParentWidth(), getParentHeight());
   setFramesPerSecond(FRAMERATE);
@@ -33,19 +45,33 @@ MainPage::MainPage(GroundCrewDisplay::MainWindow* window) : mainWindow(window), 
 
 void MainPage::update()
 {
+  Random &rand = Random::getSystemRandom();
+
   static float randWind = 0.0f;
   static float randSpeed = 0.0f;
   static float randTemp = 0.0f;
 
-  _wind.setData(20.0f + randWind);
-  _windGraph.addData(20.0f + randWind);
+  uint64_t now = duration_cast<std::chrono::milliseconds>(
+                     std::chrono::system_clock::now().time_since_epoch())
+                     .count();
 
-  _speed.setData(20.0f + randSpeed);
-  _speedGraph.addData(20.0f + randSpeed);
+  if (rand.nextFloat() < 0.26)
+  {
+    Sources::wind.addData(now, 20.0f + randWind);
+    _wind.setData(Sources::wind.last());
+  }
 
-  _engTemp.addData(421.0f + randTemp);
+  if (rand.nextFloat() < 0.26)
+  {
+    Sources::speed.addData(now, 20.0f + randWind);
+    _speed.setData(Sources::speed.last());
+  }
 
-  Random &rand = Random::getSystemRandom();
+  if (rand.nextFloat() < 0.26)
+  {
+    Sources::engTemp.addData(now, 451.0f + randTemp);
+  }
+
   randWind += rand.nextFloat() * -(rand.nextBool() * 2 - 1);
   randSpeed += rand.nextFloat() * -(rand.nextBool() * 2 - 1);
   randTemp += rand.nextFloat() * -(rand.nextBool() * 2 - 1) * 3;

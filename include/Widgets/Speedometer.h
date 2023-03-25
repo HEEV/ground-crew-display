@@ -9,8 +9,8 @@
 
 /**
  * A speedometer JUCE widget, with which to display car data in a
- * speedometer-type format
- * .
+ * speedometer-type format.
+ * 
  * @implements AnimatedAppComponent
  */
 class Speedometer : public juce::AnimatedAppComponent
