@@ -105,7 +105,7 @@ public:
 
       // The position we want to insert the value before
       std::vector<uint64_t>::iterator beforeIt = std::lower_bound(times.begin(), times.end(), time);
-      if (*beforeIt == time)
+      if (beforeIt != times.end() && *beforeIt == time)
       {
         throw std::runtime_error("Already has data at " + std::to_string(time));
       }

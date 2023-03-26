@@ -84,3 +84,10 @@ target_link_libraries(GroundCrewDisplay
         juce::juce_recommended_lto_flags
         CommunicationManager
 )
+
+add_custom_command(
+    TARGET GroundCrewDisplay
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+            ${CMAKE_SOURCE_DIR}/Tracks
+            $<TARGET_FILE_DIR:GroundCrewDisplay>/Tracks
+)
