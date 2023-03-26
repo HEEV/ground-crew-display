@@ -42,7 +42,7 @@ MainPage::MainPage(GroundCrewDisplay::MainWindow *window) : mainWindow(window), 
     Sources::engTemp.addData(data->head().timeOcc(), data->temp());
   }));
   _man.addDataReader("wind", std::function([this](WindSpeed* data){
-    Sources::wind.addData(data->head().timeOcc(), data->headSpeed());
+    Sources::wind.addData(-data->head().timeOcc(), data->headSpeed());
     _wind.setData(data->headSpeed());
   }));
 
