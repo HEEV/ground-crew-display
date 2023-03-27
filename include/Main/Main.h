@@ -11,8 +11,6 @@
 class MainPage;
 class SensorPage;
 
-#define DDS_SERVER_IP "163.11.237.241:5000"
-
 constexpr int WIDTH = 1024;
 constexpr int HEIGHT = 600;
 

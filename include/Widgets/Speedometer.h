@@ -6,102 +6,96 @@
 #include <string_view>
 
 #include "LapCounter.h"
+#include <float.h>
+#include "Main/DoubleDataSource.h"
 
 /**
  * A speedometer JUCE widget, with which to display car data in a
  * speedometer-type format.
- * 
+ *
  * @implements AnimatedAppComponent
  */
 class Speedometer : public juce::AnimatedAppComponent
 {
 public:
-	Speedometer(std::string_view name, float minData, float maxData, juce::Colour color, int subdivisions = 8, int lineWidth = 5);
-	~Speedometer();
+  Speedometer(DoubleDataSource *source, double minData, double maxData, int subdivisions = 8, int lineWidth = 5);
+  Speedometer(DoubleDataSource *source, int subdivisions = 8, int lineWidth = 5);
+  ~Speedometer();
 
-	// # JUCE METHODS
-	
-	void paint(juce::Graphics& g) override;
-	void resized() override { /*do nothing*/ }
-	void update() override;
+  // # JUCE METHODS
 
-	void addLapCounter(LapCounter* lc);
+  void paint(juce::Graphics &g) override;
+  void resized() override
+  { /*do nothing*/
+  }
+  void update() override;
 
-	// # SPEEDOMETER INTERFACING
+  void addLapCounter(LapCounter *lc);
 
-	/**
-	 * @brief Sets the minimum and maximum value which the speedometer
-	 * can display.
-	 *
-	 * @param min The minimum display value.
-	 * @param max The maximum display value.
-	 */	
-	void setDataRange(float min, float max);
+  // # SPEEDOMETER INTERFACING
 
-	/**
-	 * @brief The data to currently display on the speedometer. 
-	 * Data outside of the range will be set to the closest
-	 * extreme.
-	 * 
-	 * @param value -> The value to display
-	 *
-	 */
-	void setData(float value); // throws std::out_of_range
-	
-	/**
-	 * @brief The data currently displaying on the speedometer.
-	 *
-	 * 
-	 * @return data now displaying on the speedometer (set using
-	 * Speedometer::setData(float)).
-	 */
-	float getData() const;
+  /**
+   * @brief Sets the minimum and maximum value which the speedometer
+   * can display.
+   *
+   * @param min The minimum display value.
+   * @param max The maximum display value.
+   */
+  void setDataRange(float min, float max);
 
-	/**
-	 * @brief Sets the name of the speedometer.
-	 *
-	 * @param name The new name the speedometer.
-	 */
-	void setName(std::string name);
+  void updateData(); // throws std::out_of_range
+
+  /**
+   * @brief The data currently displaying on the speedometer.
+   *
+   *
+   * @return data now displaying on the speedometer (set using
+   * Speedometer::setData(float)).
+   */
+  float getData() const;
+
+  /**
+   * @brief Sets the name of the speedometer.
+   *
+   * @param name The new name the speedometer.
+   */
+  void setName(std::string name);
 
 private:
-	// # DISPLAY DATA
-	int _lineWidth;
-	int _subdivisions;
+  DoubleDataSource *source;
 
-	LapCounter* _lc;
+  // # DISPLAY DATA
+  int _lineWidth;
+  int _subdivisions;
 
-	/*
-	 * The rotation value of the speedometer, in radians.
-	 */
-	std::atomic<float> _rotation;
+  LapCounter *_lc;
 
-	// # SPEEDOMETER DATA
+  /*
+   * The rotation value of the speedometer, in radians.
+   */
+  std::atomic<float> _rotation;
 
-	/*
-	 * The minimum of the data range of the speedometer.
-	 */
-	float _dataMin;
+  // # SPEEDOMETER DATA
 
-	/*
-	 * The maximum of the data range of the speedometer.
-	 */
-	float _dataMax;
+  /*
+   * The minimum of the data range of the speedometer.
+   */
+  double _dataMin;
 
-	/*
-	 * The data displaying on the speedometer.
-	 */
-	float _data;
+  /*
+   * The maximum of the data range of the speedometer.
+   */
+  double _dataMax;
 
-	/*
-	 * The data displaying on the speedometer.
-	 */
-	std::string _name;
+  /*
+   * The data displaying on the speedometer.
+   */
+  std::string _name;
 
-	/*
-	 * The color displaying on the speedometer.
-	 */
-	juce::Colour _color;
+  /*
+   * The data displaying on the speedometer.
+   */
+  double _data;
 
-	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(Speedometer)
+  JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(Speedometer)
 };

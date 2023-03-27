@@ -8,9 +8,9 @@
 #include "Main/Sources.h"
 
 // Main JUCE component
-MainPage::MainPage(GroundCrewDisplay::MainWindow *window) : Page(window, ActivePage::MainPage), _wind("Wind MPH", 0.0f, 40.0f, Colour(253, 185, 19)), _windGraph(&Sources::wind, 0.0f, 40.0f),
+MainPage::MainPage(GroundCrewDisplay::MainWindow *window) : Page(window, ActivePage::MainPage), _wind(&Sources::wind, 0.0f, 40.0f), _windGraph(&Sources::wind, 0.0f, 40.0f),
                                                             _map("Tracks/ShellTrack.svg", 1.0f), _engTemp(&Sources::engTemp),
-                                                            _speed("Vehicle MPH", 0.0f, 40.0f, Colour(253, 185, 19), 6), _speedGraph(&Sources::speed, false, 3000), _man("163.11.237.241:5001")
+                                                            _speed(&Sources::speed, 0.0f, 40.0f), _speedGraph(&Sources::speed, false, 3000)
 {
   addAndMakeVisible(_wind);
   addAndMakeVisible(_windGraph);
@@ -40,4 +40,4 @@ void MainPage::resized()
   _map.setBounds(0, getHeight() - 150, 300, 150);
 
   displayPageSwitcher();
-}
+}      

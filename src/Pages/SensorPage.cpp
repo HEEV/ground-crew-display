@@ -7,7 +7,7 @@
 #include "Main/ActivePage.h"
 
 // Main JUCE component
-SensorPage::SensorPage(GroundCrewDisplay::MainWindow *window) : mainWindow(window), _wind("Wind MPH", 0.0f, 40.0f, Colour(253, 185, 19)), _windGraph(&Sources::wind, 0.0f, 40.0f),
+SensorPage::SensorPage(GroundCrewDisplay::MainWindow *window) : mainWindow(window), _wind(&Sources::wind, 0.0f, 40.0f), _windGraph(&Sources::wind, 0.0f, 40.0f),
                                                                 _pageSwitcher(window, ActivePage::SensorPage)
 {
   addAndMakeVisible(_wind);
