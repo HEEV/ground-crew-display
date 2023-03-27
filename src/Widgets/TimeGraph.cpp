@@ -172,9 +172,9 @@ void TimeGraph::paint(juce::Graphics &g)
   g.setColour(juce::Colours::black);
 
   g.setColour(juce::Colours::black);
-  juce::Line<float> horizLine(juce::Point<float>(H_PADDING, 0),
-                              juce::Point<float>(H_PADDING, bounds.getHeight() - V_PADDING));
-  juce::Line<float> vertLine(juce::Point<float>(H_PADDING, bounds.getHeight() - V_PADDING),
+  juce::Line<float> horizLine(juce::Point<float>(H_PADDING + 1.5, 0),
+                              juce::Point<float>(H_PADDING + 1.5, bounds.getHeight() - V_PADDING - 1.5));
+  juce::Line<float> vertLine(juce::Point<float>(H_PADDING, bounds.getHeight() - V_PADDING - 1.5),
                              juce::Point<float>(bounds.getWidth(), bounds.getHeight() - V_PADDING));
 
   g.drawLine(horizLine, 3);
