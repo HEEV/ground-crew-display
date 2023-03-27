@@ -5,8 +5,8 @@
 #include <utility>
 #include <vector>
 
-#define H_PADDING 50
-#define V_PADDING 30
+#define H_PADDING 20
+#define V_PADDING 20
 
 TimeGraph::TimeGraph(DoubleDataSource *source, bool dropBounds, uint64_t duration) : source(source), dropBounds(dropBounds), fixedBounds(false)
 {
@@ -70,25 +70,11 @@ void TimeGraph::paint(juce::Graphics &g)
     }
   }
 
-  int usableHeight = getHeight() - V_PADDING;
-  int usableWidth = getWidth() - H_PADDING;
-
   juce::Rectangle bounds = getLocalBounds();
+  int usableHeight = bounds.getHeight() - V_PADDING;
+  int usableWidth = bounds.getWidth() - H_PADDING;
+
   g.fillAll(getLookAndFeel().findColour(DocumentWindow::backgroundColourId));
-  g.setColour(juce::Colours::black);
-
-  g.drawText(std::to_string(duration / 1000) + "s", H_PADDING, usableHeight, usableWidth / 2, V_PADDING, juce::Justification::centredLeft);
-  g.drawText("now", H_PADDING + usableWidth / 2, usableHeight, usableWidth / 2, V_PADDING, juce::Justification::centredRight);
-
-  min = round(min * 100) / 100;
-  max = round(max * 100) / 100;
-
-  std::stringstream minStream;
-  std::stringstream maxStream;
-  minStream << std::fixed << std::setprecision(0) << min;
-  maxStream << std::fixed << std::setprecision(0) << max;
-  g.drawText(minStream.str(), 0, usableHeight / 2, H_PADDING - 2, usableHeight / 2, juce::Justification::bottomRight);
-  g.drawText(maxStream.str(), 0, 0, H_PADDING - 2, usableHeight / 2, juce::Justification::topRight);
 
   if (source->empty())
   {
@@ -97,13 +83,14 @@ void TimeGraph::paint(juce::Graphics &g)
   }
   else
   {
-
     // Its important to remember that the data source does not guarantee that the data is from the last n seconds, but only that the data stored does not exceed n seconds
     uint64_t now = duration_cast<std::chrono::milliseconds>(
                        std::chrono::system_clock::now().time_since_epoch())
                        .count();
     uint64_t endTime = now;
     uint64_t startTime = endTime - duration;
+
+    g.setColour(juce::Colours::blue);
 
     std::vector<juce::Point<float>> points;
 
@@ -114,21 +101,26 @@ void TimeGraph::paint(juce::Graphics &g)
       uint64_t time = pair.first;
       double value = pair.second;
 
-      float progressX;
+      // If there is a point to the left we should be able to interpolate, unless of course there is not a point to the right, meaning there's only one point, and we can't draw it anyway since it's off screen
       if (time < startTime)
       {
-        progressX = 0.0f;
+        if (source->size() == 1)
+        {
+          break;
+        }
+        else if (source->atIndex(i + 1).first < startTime)
+        {
+          continue;
+        }
+        time = startTime;
+        value = source->interpolatedAt(startTime);
       }
-      else
-      {
-        progressX = (time - startTime) / ((float)(endTime - startTime));
-      }
-      float x = std::lerp((float)H_PADDING, (float)getWidth(), progressX);
+
+      float progressX = (time - startTime) / ((float)(endTime - startTime));
+      float x = std::lerp((float)H_PADDING, (float)bounds.getWidth(), progressX);
 
       float progressY = (value - min) / (max - min);
       float y = std::lerp((float)bounds.getHeight() - V_PADDING, 0.0f, progressY);
-
-      g.setColour(juce::Colours::blue);
 
       juce::Point<float> newPoint(x, y);
       if (i > 0)
@@ -143,9 +135,42 @@ void TimeGraph::paint(juce::Graphics &g)
     for (auto p : points)
     {
       g.setColour(juce::Colours::green);
-      g.fillEllipse(p.getX() - 1, p.getY() -1, 2, 2);
+      g.fillEllipse(p.getX() - 1, p.getY() - 1, 2, 2);
     }
   }
+
+  // We redraw the backgorund color so that we can trim off the parts of the graph we don't need
+  g.setColour(getLookAndFeel().findColour(DocumentWindow::backgroundColourId));
+  g.fillRect(0, 0, H_PADDING, bounds.getHeight());
+  g.fillRect(H_PADDING, usableHeight, usableWidth, V_PADDING);
+
+  g.setColour(juce::Colours::black);
+
+  g.drawText(std::to_string(duration / 1000) + "s", H_PADDING, usableHeight, usableWidth / 2, V_PADDING, juce::Justification::centredLeft);
+  g.drawText("now", H_PADDING + usableWidth / 2, usableHeight, usableWidth / 2, V_PADDING, juce::Justification::centredRight);
+
+  g.setColour(juce::Colours::blue);
+  g.drawText(source->getName(), H_PADDING, usableHeight, usableWidth, V_PADDING, juce::Justification::centred);
+  g.setColour(juce::Colours::black);
+
+  min = round(min * 100) / 100;
+  max = round(max * 100) / 100;
+
+  std::stringstream minStream;
+  std::stringstream maxStream;
+  minStream << std::fixed << std::setprecision(0) << min;
+  maxStream << std::fixed << std::setprecision(0) << max;
+  g.drawText(minStream.str(), 0, usableHeight / 2, H_PADDING - 2, usableHeight / 2, juce::Justification::bottomRight);
+  g.drawText(maxStream.str(), 0, 0, H_PADDING - 2, usableHeight / 2, juce::Justification::topRight);
+
+  g.setColour(juce::Colours::blue);
+  g.saveState();
+  g.addTransform(AffineTransform::rotation(-MathConstants<float>::halfPi, 0, 0));
+
+  g.drawText(source->getUnits(), -usableHeight, 0, usableHeight, H_PADDING, Justification::centred);
+  g.restoreState();
+  g.setColour(juce::Colours::black);
+
   g.setColour(juce::Colours::black);
   juce::Line<float> horizLine(juce::Point<float>(H_PADDING, 0),
                               juce::Point<float>(H_PADDING, bounds.getHeight() - V_PADDING));

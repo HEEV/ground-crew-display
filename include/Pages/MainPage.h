@@ -6,15 +6,14 @@
 #include "Widgets/MapComponent.h"
 #include "Main/Main.h"
 #include "Main/PageSwitchComponent.h"
+#include "Pages/Page.h"
 
-class MainPage : public juce::AnimatedAppComponent
+class MainPage : public Page
 {
 public:
   MainPage(GroundCrewDisplay::MainWindow* window);
   ~MainPage() override;
 
-  void update() override;
-  void paint(juce::Graphics &) override;
   void resized() override;
 
 private:
@@ -29,8 +28,6 @@ private:
   MapComponent _map;
 
   TimeGraph _engTemp;
-
-  PageSwitchComponent _pageSwitcher; 
   
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainPage)
 };
