@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <cmath>
 
-DoubleDataSource::DoubleDataSource(uint64_t maxDuration) : DataSource<double>(maxDuration)
+DoubleDataSource::DoubleDataSource(uint64_t maxDuration, std::string name, std::string units) : DataSource<double>(maxDuration, name, units)
 {
 }
 
@@ -25,9 +25,25 @@ double DoubleDataSource::interpolatedAt(uint64_t time)
   uint64_t startTime = timeAtLeftOf(time);
   uint64_t endTime = timeAtRightOf(time);
 
-  double progress = (time - startTime) / (endTime - startTime);
+  double progress = ((double) (time - startTime)) / ((double) (endTime - startTime));
 
   return std::lerp(left, right, progress);
+}
+
+double DoubleDataSource::slopeAt(uint64_t time)
+{
+  if (!canInterpolateAt(time))
+  {
+    throw std::runtime_error("Can not get slope at " + std::to_string(time) + " since we can not interpolate at that time");
+  }
+
+  double left = leftOf(time);
+  double right = rightOf(time);
+
+  uint64_t startTime = timeAtLeftOf(time);
+  uint64_t endTime = timeAtRightOf(time);
+
+  return (right - left) / (endTime - startTime);
 }
 
 double DoubleDataSource::getMin()
@@ -40,11 +56,13 @@ double DoubleDataSource::getMax()
   return max;
 }
 
-double DoubleDataSource::getGlobalMin(){
+double DoubleDataSource::getGlobalMin()
+{
   return globalMin;
 }
 
-double DoubleDataSource::getGlobalMax() {
+double DoubleDataSource::getGlobalMax()
+{
   return globalMax;
 }
 
@@ -91,7 +109,8 @@ void DoubleDataSource::onDataDropped(double value)
     globalsNeedUpdate = true;
   }
 
-  if (globalsNeedUpdate) {
+  if (globalsNeedUpdate)
+  {
     updateGlobals();
   }
 }

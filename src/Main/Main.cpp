@@ -1,24 +1,46 @@
 #include <locale>
+#include <thread>
 #include <string>
+#include <chrono>
+#include <cstdlib>
 
 #include "Main/Main.h"
+#include "Main/Sources.h"
 #include "Packets.h"
 
 #include "Pages/MainPage.h"
 #include "Pages/SensorPage.h"
 
-GroundCrewDisplay::GroundCrewDisplay()
+GroundCrewDisplay::GroundCrewDisplay() : cmanager("163.11.237.241:5001")
 {
 }
 
 GroundCrewDisplay::~GroundCrewDisplay()
 {
-  // delete cmanager;
 }
 
 void GroundCrewDisplay::initialise(const juce::String &commandLine)
 {
-  // cmanager = new CommunicationManager(DDS_SERVER_IP, false);
+  // Register all packet types and channels we are interested in
+  REGISTER_TYPE_TO_MANAGER(WheelData, "vel", cmanager);
+  REGISTER_TYPE_TO_MANAGER(BatteryVoltage, "bat", cmanager);
+  REGISTER_TYPE_TO_MANAGER(EngineTemp, "enTemp", cmanager);
+  REGISTER_TYPE_TO_MANAGER(GPSPosition, "gps", cmanager);
+  REGISTER_TYPE_TO_MANAGER(WindSpeed, "wind", cmanager);
+  REGISTER_TYPE_TO_MANAGER(CarTilt, "tilt", cmanager);
+
+  // Add callbacks for when data is recieved on a specified channel.
+  // These callbacks run on a seperate thread, so be careful with data races
+  cmanager.addDataReader("vel", std::function([this](WheelData* data){
+    Sources::speed.bufferData(data->head().timeOcc(), data->velocity());
+  }));
+  cmanager.addDataReader("enTemp", std::function([this](EngineTemp* data){
+    Sources::engTemp.bufferData(data->head().timeOcc(), data->temp());
+  }));
+  cmanager.addDataReader("wind", std::function([this](WindSpeed* data){
+    Sources::wind.bufferData(-data->head().timeOcc(), data->headSpeed());
+  }));
+
   mainWindow.reset(new MainWindow(getApplicationName()));
 }
 
@@ -51,8 +73,6 @@ GroundCrewDisplay::MainWindow::MainWindow(juce::String name)
   llf.setColour(DocumentWindow::backgroundColourId, getBackgroundColour());
   llf.setColour(ColourIds::textColourId, Colours::black);
 
-  Desktop::getInstance().setScreenSaverEnabled(false);
-
   setPage(ActivePage::MainPage);
 
   setVisible(true);
@@ -65,7 +85,6 @@ GroundCrewDisplay::MainWindow::~MainWindow()
 
 void GroundCrewDisplay::MainWindow::setPage(ActivePage page)
 {
-  _currentComponent = page;
   juce::Component *newPage;
   switch (page)
   {
@@ -98,6 +117,24 @@ void GroundCrewDisplay::MainWindow::setPage(ActivePage page)
 void GroundCrewDisplay::MainWindow::closeButtonPressed()
 {
   JUCEApplication::getInstance()->systemRequestedQuit();
+}
+
+void buffTester(DoubleDataSource *source, double start)
+{
+  static Random &rand = Random::getSystemRandom();
+  double randVal = 0;
+
+  while (true)
+  {
+    uint64_t now = duration_cast<std::chrono::milliseconds>(
+                       std::chrono::system_clock::now().time_since_epoch())
+                       .count();
+
+    source->bufferData(now, start + randVal);
+
+    randVal += rand.nextDouble() * -(rand.nextBool() * 2 - 1);
+    std::this_thread::sleep_for(std::chrono::milliseconds(rand.nextInt(100) + 2));
+  }
 }
 
 // Launch the app

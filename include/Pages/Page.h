@@ -4,6 +4,8 @@
 #include "Main/Main.h"
 #include "Main/PageSwitchComponent.h"
 #include <string>
+#include "Main/ActivePage.h"
+#include "Main/Sources.h"
 
 class Page : public juce::AnimatedAppComponent
 {
@@ -11,13 +13,15 @@ public:
   Page(GroundCrewDisplay::MainWindow *window, ActivePage page);
   ~Page();
 
-  virtual void update() override {}
-  virtual void paint(juce::Graphics &) override {}
+  void update() override;
+  void paint(juce::Graphics &) override;
   virtual void resized() override {}
 
-  void displayPageSwitcher(juce::Graphics &);
+protected:
+  void displayPageSwitcher();
+  const GroundCrewDisplay::MainWindow *mainWindow;
 
-  PageSwitchComponent _pageSwitcher; 
 private:
-  GroundCrewDisplay::MainWindow *mainWindow;
+  PageSwitchComponent pageSwitcher;
+  bool isMainPage;
 };

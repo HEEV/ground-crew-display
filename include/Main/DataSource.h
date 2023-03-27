@@ -1,19 +1,24 @@
 #pragma once
 
 #include <vector>
+#include <queue>
 #include <stdexcept>
 #include <string>
 #include <algorithm>
 #include <iostream>
 #include <stdio.h>
 #include <utility>
+#include <mutex>
 
-// this is not threadsafe and its gonna break lol
 template <typename T>
 class DataSource
 {
 public:
-  DataSource(uint64_t maxDuration) : maxDuration(maxDuration)
+  DataSource(uint64_t maxDuration, std::string name = "<unknown name>", std::string units = "<unknown units>") : maxDuration(maxDuration), name(name), units(units)
+  {
+  }
+
+  ~DataSource()
   {
   }
 
@@ -63,7 +68,7 @@ public:
       throw std::runtime_error("No time to the left of " + std::to_string(time));
     }
 
-    return data[std::distance(timeAtLeftIt(time), times.begin())];
+    return data[std::distance(times.begin(), timeAtLeftIt(time))];
   }
 
   T rightOf(uint64_t time)
@@ -84,6 +89,23 @@ public:
   uint64_t timeAtRightOf(uint64_t time)
   {
     return *timeAtRightIt(time);
+  }
+
+  void bufferData(uint64_t time, T newDataPoint)
+  {
+    std::unique_lock lck(buffMtx);
+    buff.emplace(time, newDataPoint);
+  }
+
+  void commitBuffer()
+  {
+    std::unique_lock lck(buffMtx);
+    while(!buff.empty())
+    {
+      auto& front = buff.front();
+      addData(front.first, front.second);
+      buff.pop();
+    }
   }
 
   void addData(uint64_t time, T newDataPoint)
@@ -142,7 +164,8 @@ public:
     return times.size();
   }
 
-  std::pair<uint64_t, T> atIndex(size_t i) {
+  std::pair<uint64_t, T> atIndex(size_t i)
+  {
     return std::pair<uint64_t, T>(times[i], data[i]);
   }
 
@@ -161,12 +184,22 @@ public:
     return times.back();
   }
 
-  T first() {
+  T first()
+  {
     return data.front();
   }
 
-  T last() {
+  T last()
+  {
     return data.back();
+  }
+  
+  std::string getName() {
+    return name;
+  }
+
+  std::string getUnits() {
+    return units;
   }
 
 protected:
@@ -179,9 +212,15 @@ protected:
   std::vector<T> data;
 
 private:
+  std::queue<std::pair<uint64_t, T>> buff;
+  std::mutex buffMtx;
+
+  std::string name;
+  std::string units;
+
   std::vector<uint64_t>::iterator timeAtLeftIt(uint64_t time)
   {
-    return std::upper_bound(times.begin(), times.end(), time, std::greater<double>());
+    return std::lower_bound(times.begin(), times.end(), time) - 1;
   }
 
   std::vector<uint64_t>::iterator timeAtRightIt(uint64_t time)

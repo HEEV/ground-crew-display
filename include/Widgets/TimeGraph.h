@@ -25,4 +25,6 @@ private:
   bool fixedBounds;
   float fixedMin;
   float fixedMax;
+
+  void drawText(juce::Graphics& g);
 };

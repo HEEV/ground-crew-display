@@ -7,14 +7,14 @@
 #include "Widgets/MapComponent.h"
 #include "Main/Main.h"
 #include "Main/PageSwitchComponent.h"
+#include "Pages/Page.h"
 
-class MainPage : public juce::Component
+class MainPage : public Page
 {
 public:
   MainPage(GroundCrewDisplay::MainWindow* window);
   ~MainPage() override;
 
-  void paint(juce::Graphics &) override;
   void resized() override;
 
 private:
@@ -29,8 +29,6 @@ private:
   MapComponent _map;
 
   TimeGraph _engTemp;
-
-  PageSwitchComponent _pageSwitcher; 
 
   CommunicationManager _man;
   

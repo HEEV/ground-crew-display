@@ -1,11 +1,12 @@
 #pragma once
 
 #include <JuceHeader.h>
-#include "CommunicationManager.h"
+#include <CommunicationManager.h>
 #include <locale>
 #include "Packets.h"
 #include <string>
 #include "ActivePage.h"
+#include "DoubleDataSource.h"
 
 class MainPage;
 class SensorPage;
@@ -14,6 +15,8 @@ class SensorPage;
 
 constexpr int WIDTH = 1024;
 constexpr int HEIGHT = 600;
+
+void buffTester(DoubleDataSource* source, double start = 20);
 
 /**
  * Main application handler.
@@ -47,12 +50,10 @@ public:
     juce::Component *mainPage;
     juce::Component *sensorPage;
 
-    ActivePage _currentComponent = ActivePage::MainPage;
-
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainWindow)
   };
 
 private:
-  CommunicationManager *cmanager;
+  CommunicationManager cmanager;
   std::unique_ptr<MainWindow> mainWindow;
 };
