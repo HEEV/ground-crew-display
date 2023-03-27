@@ -20,8 +20,6 @@ MainPage::MainPage(GroundCrewDisplay::MainWindow *window) : Page(window, ActiveP
 
   addAndMakeVisible(_map);
   addAndMakeVisible(_engTemp);
-
-  setSize(getParentWidth(), getParentHeight());
 }
 
 MainPage::~MainPage()

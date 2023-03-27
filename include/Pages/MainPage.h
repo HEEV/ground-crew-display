@@ -29,8 +29,6 @@ private:
   MapComponent _map;
 
   TimeGraph _engTemp;
-
-  CommunicationManager _man;
   
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainPage)
 };
