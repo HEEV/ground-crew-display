@@ -5,8 +5,8 @@
 #include <utility>
 #include <vector>
 
-#define H_PADDING 50
-#define V_PADDING 30
+#define H_PADDING 20
+#define V_PADDING 20
 
 TimeGraph::TimeGraph(DoubleDataSource *source, bool dropBounds, uint64_t duration) : source(source), dropBounds(dropBounds), fixedBounds(false)
 {
@@ -149,6 +149,10 @@ void TimeGraph::paint(juce::Graphics &g)
   g.drawText(std::to_string(duration / 1000) + "s", H_PADDING, usableHeight, usableWidth / 2, V_PADDING, juce::Justification::centredLeft);
   g.drawText("now", H_PADDING + usableWidth / 2, usableHeight, usableWidth / 2, V_PADDING, juce::Justification::centredRight);
 
+  g.setColour(juce::Colours::blue);
+  g.drawText(source->getName(), H_PADDING, usableHeight, usableWidth, V_PADDING, juce::Justification::centred);
+  g.setColour(juce::Colours::black);
+
   min = round(min * 100) / 100;
   max = round(max * 100) / 100;
 
@@ -158,6 +162,14 @@ void TimeGraph::paint(juce::Graphics &g)
   maxStream << std::fixed << std::setprecision(0) << max;
   g.drawText(minStream.str(), 0, usableHeight / 2, H_PADDING - 2, usableHeight / 2, juce::Justification::bottomRight);
   g.drawText(maxStream.str(), 0, 0, H_PADDING - 2, usableHeight / 2, juce::Justification::topRight);
+
+  g.setColour(juce::Colours::blue);
+  g.saveState();
+  g.addTransform(AffineTransform::rotation(-MathConstants<float>::halfPi, 0, 0));
+
+  g.drawText(source->getUnits(), -usableHeight, 0, usableHeight, H_PADDING, Justification::centred);
+  g.restoreState();
+  g.setColour(juce::Colours::black);
 
   g.setColour(juce::Colours::black);
   juce::Line<float> horizLine(juce::Point<float>(H_PADDING, 0),

@@ -14,9 +14,7 @@ void Page::update()
 {
   if (isMainPage)
   {
-    Sources::wind.commitBuffer();
-    Sources::speed.commitBuffer();
-    Sources::engTemp.commitBuffer();
+    Sources::commitAllBuffers();
   }
 }
 

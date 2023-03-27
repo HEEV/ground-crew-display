@@ -9,5 +9,11 @@ namespace Sources
 {
   inline DoubleDataSource wind = DoubleDataSource(MAX_DURATION, "Wind", "MPH");
   inline DoubleDataSource speed = DoubleDataSource(MAX_DURATION, "Speed", "MPH");
-  inline DoubleDataSource engTemp = DoubleDataSource(MAX_DURATION, "Engine Temperature", "°c");
+  inline DoubleDataSource engTemp = DoubleDataSource(MAX_DURATION, "Engine Temperature", "°C");
+
+  inline void commitAllBuffers() {
+    wind.commitBuffer();
+    speed.commitBuffer();
+    engTemp.commitBuffer();
+  }
 }
