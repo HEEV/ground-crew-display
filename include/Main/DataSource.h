@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <queue>
 #include <stdexcept>
 #include <string>
 #include <algorithm>
@@ -15,12 +16,10 @@ class DataSource
 public:
   DataSource(uint64_t maxDuration, std::string name = "<unknown name>", std::string units = "<unknown units>") : maxDuration(maxDuration), name(name), units(units)
   {
-    buff = new std::vector<std::pair<uint64_t, T>>();
   }
 
   ~DataSource()
   {
-    delete buff;
   }
 
   T at(uint64_t time)
@@ -94,31 +93,19 @@ public:
 
   void bufferData(uint64_t time, T newDataPoint)
   {
-    buffMtx.lock();
-    buff->push_back(std::pair<uint64_t, T>(time, newDataPoint));
-    buffMtx.unlock();
+    std::unique_lock lck(buffMtx);
+    buff.emplace(time, newDataPoint);
   }
 
   void commitBuffer()
   {
-    buffMtx.lock();
-
-    if (buff->empty())
+    std::unique_lock lck(buffMtx);
+    while(!buff.empty())
     {
-      buffMtx.unlock();
-      return;
+      auto& front = buff.front();
+      addData(front.first, front.second);
+      buff.pop();
     }
-
-    std::vector<std::pair<uint64_t, T>> *oldBuff = buff;
-    buff = new std::vector<std::pair<uint64_t, T>>();
-    buffMtx.unlock();
-
-    for (std::pair<uint64_t, T> newData : *oldBuff)
-    {
-      addData(newData.first, newData.second);
-    }
-
-    delete oldBuff;
   }
 
   void addData(uint64_t time, T newDataPoint)
@@ -225,7 +212,7 @@ protected:
   std::vector<T> data;
 
 private:
-  std::vector<std::pair<uint64_t, T>> *buff;
+  std::queue<std::pair<uint64_t, T>> buff;
   std::mutex buffMtx;
 
   std::string name;

@@ -66,8 +66,6 @@ GroundCrewDisplay::MainWindow::MainWindow(juce::String name)
   llf.setColour(DocumentWindow::backgroundColourId, getBackgroundColour());
   llf.setColour(ColourIds::textColourId, Colours::black);
 
-  Desktop::getInstance().setScreenSaverEnabled(false);
-
   setPage(ActivePage::MainPage);
 
   setVisible(true);
