@@ -5,7 +5,7 @@
 #include <utility>
 #include <vector>
 
-#define H_PADDING 20
+#define H_PADDING 40
 #define V_PADDING 20
 
 TimeGraph::TimeGraph(DoubleDataSource *source, bool dropBounds, uint64_t duration) : source(source), dropBounds(dropBounds), fixedBounds(false)
