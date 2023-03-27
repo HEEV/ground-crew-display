@@ -7,14 +7,20 @@
 #include <iostream>
 #include <stdio.h>
 #include <utility>
+#include <mutex>
 
-// this is not threadsafe and its gonna break lol
 template <typename T>
 class DataSource
 {
 public:
-  DataSource(uint64_t maxDuration) : maxDuration(maxDuration)
+  DataSource(uint64_t maxDuration, std::string name = "<unknown name>", std::string units = "<unknown units>") : maxDuration(maxDuration), name(name), units(units)
   {
+    buff = new std::vector<std::pair<uint64_t, T>>();
+  }
+
+  ~DataSource()
+  {
+    delete buff;
   }
 
   T at(uint64_t time)
@@ -63,7 +69,7 @@ public:
       throw std::runtime_error("No time to the left of " + std::to_string(time));
     }
 
-    return data[std::distance(timeAtLeftIt(time), times.begin())];
+    return data[std::distance(times.begin(), timeAtLeftIt(time))];
   }
 
   T rightOf(uint64_t time)
@@ -84,6 +90,35 @@ public:
   uint64_t timeAtRightOf(uint64_t time)
   {
     return *timeAtRightIt(time);
+  }
+
+  void bufferData(uint64_t time, T newDataPoint)
+  {
+    buffMtx.lock();
+    buff->push_back(std::pair<uint64_t, T>(time, newDataPoint));
+    buffMtx.unlock();
+  }
+
+  void commitBuffer()
+  {
+    buffMtx.lock();
+
+    if (buff->empty())
+    {
+      buffMtx.unlock();
+      return;
+    }
+
+    std::vector<std::pair<uint64_t, T>> *oldBuff = buff;
+    buff = new std::vector<std::pair<uint64_t, T>>();
+    buffMtx.unlock();
+
+    for (std::pair<uint64_t, T> newData : *oldBuff)
+    {
+      addData(newData.first, newData.second);
+    }
+
+    delete oldBuff;
   }
 
   void addData(uint64_t time, T newDataPoint)
@@ -142,7 +177,8 @@ public:
     return times.size();
   }
 
-  std::pair<uint64_t, T> atIndex(size_t i) {
+  std::pair<uint64_t, T> atIndex(size_t i)
+  {
     return std::pair<uint64_t, T>(times[i], data[i]);
   }
 
@@ -161,12 +197,22 @@ public:
     return times.back();
   }
 
-  T first() {
+  T first()
+  {
     return data.front();
   }
 
-  T last() {
+  T last()
+  {
     return data.back();
+  }
+  
+  std::string getName() {
+    return name;
+  }
+
+  std::string getUnits() {
+    return units;
   }
 
 protected:
@@ -179,9 +225,15 @@ protected:
   std::vector<T> data;
 
 private:
+  std::vector<std::pair<uint64_t, T>> *buff;
+  std::mutex buffMtx;
+
+  std::string name;
+  std::string units;
+
   std::vector<uint64_t>::iterator timeAtLeftIt(uint64_t time)
   {
-    return std::upper_bound(times.begin(), times.end(), time, std::greater<double>());
+    return std::lower_bound(times.begin(), times.end(), time) - 1;
   }
 
   std::vector<uint64_t>::iterator timeAtRightIt(uint64_t time)
