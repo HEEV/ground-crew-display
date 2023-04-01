@@ -5,7 +5,7 @@
 
 #include "Widgets/Constants.h"
 
-MapComponent::MapComponent(DoubleDataSource *distSource, String trackFilepath, float mapLength) : _distSource(distSource),
+MapComponent::MapComponent(NumericDataSource<double> *distSource, String trackFilepath, float mapLength) : _distSource(distSource),
                                                                                                   _track(), _trackLength(mapLength), _trackerPos(0.0f, 0.0f),
                                                                                                   _lastPos(0.0f, 0.0f), _stroke(5.0f, PathStrokeType::JointStyle::curved),
                                                                                                   _distanceAlong(0.0f), _arrowLength(0.0f)

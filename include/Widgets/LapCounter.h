@@ -1,11 +1,11 @@
 #pragma once
 #include <JuceHeader.h>
-#include "Main/DoubleDataSource.h"
+#include "Main/NumericDataSource.h"
 
 class LapCounter : public Component
 {
 public:
-	LapCounter(DoubleDataSource *velSource, double lapLength, unsigned lapAmount);
+	LapCounter(NumericDataSource<double> *velSource, double lapLength, unsigned lapAmount);
 
 	void paint(Graphics& g) override;
 	void resized() override;
@@ -16,7 +16,7 @@ private:
 	ProgressBar _lapCounter;
 	ProgressBar _lapProgress;
 
-  DoubleDataSource *_velSource;
+  NumericDataSource<double> *_velSource;
 
   double _lapCount;
 	double _lapDist;

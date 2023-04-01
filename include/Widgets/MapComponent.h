@@ -1,11 +1,11 @@
 #pragma once
 #include <JuceHeader.h>
-#include "Main/DoubleDataSource.h"
+#include "Main/NumericDataSource.h"
 
 class MapComponent : public juce::Component
 {
 public:
-	MapComponent(DoubleDataSource* distSource, String trackFilepath, float mapLength);
+	MapComponent(NumericDataSource<double>* distSource, String trackFilepath, float mapLength);
 	~MapComponent() override;
 
 	void paint(juce::Graphics& g) override;
@@ -15,7 +15,7 @@ public:
 	void incDistance(float deltaDist);
 
 private:
-  DoubleDataSource* _distSource;
+  NumericDataSource<double>* _distSource;
 
 	Path _track;
 	float _trackLength;

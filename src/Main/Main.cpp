@@ -122,7 +122,7 @@ void GroundCrewDisplay::MainWindow::closeButtonPressed()
   JUCEApplication::getInstance()->systemRequestedQuit();
 }
 
-void buffTester(DoubleDataSource *source, double start)
+void buffTester(NumericDataSource<double> *source, double start)
 {
   static Random &rand = Random::getSystemRandom();
   double randVal = 0;

@@ -2,7 +2,7 @@
 #include <fmt/format.h>
 #include <string>
 
-LapCounter::LapCounter(DoubleDataSource *velSource, double lapLength, unsigned lapAmount) : _velSource(velSource), _lapCounter(_lapCount),
+LapCounter::LapCounter(NumericDataSource<double> *velSource, double lapLength, unsigned lapAmount) : _velSource(velSource), _lapCounter(_lapCount),
                                                                                             _lapProgress(_lapDist), _lapCount(0),
                                                                                             _lapDist(0), _lapLength(lapLength), _lapAmount(lapAmount), _finished(false)
 {

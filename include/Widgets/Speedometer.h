@@ -7,7 +7,7 @@
 
 #include "LapCounter.h"
 #include <float.h>
-#include "Main/DoubleDataSource.h"
+#include "Main/NumericDataSource.h"
 
 /**
  * A speedometer JUCE widget, with which to display car data in a
@@ -18,8 +18,8 @@
 class Speedometer : public juce::AnimatedAppComponent
 {
 public:
-  Speedometer(DoubleDataSource *source, double minData, double maxData, int subdivisions = 8, int lineWidth = 5);
-  Speedometer(DoubleDataSource *source, int subdivisions = 8, int lineWidth = 5);
+  Speedometer(NumericDataSource<double> *source, double minData, double maxData, int subdivisions = 8, int lineWidth = 5);
+  Speedometer(NumericDataSource<double> *source, int subdivisions = 8, int lineWidth = 5);
   ~Speedometer();
 
   // # JUCE METHODS
@@ -62,7 +62,7 @@ public:
   void setName(std::string name);
 
 private:
-  DoubleDataSource *source;
+  NumericDataSource<double> *source;
 
   // # DISPLAY DATA
   int _lineWidth;

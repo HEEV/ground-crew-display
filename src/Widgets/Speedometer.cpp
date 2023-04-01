@@ -5,7 +5,7 @@
 #include "Widgets/Speedometer.h"
 #include "Widgets/Constants.h"
 
-Speedometer::Speedometer(DoubleDataSource *source, int subdivisions, int lineWidth) : source(source), _subdivisions(subdivisions), _lineWidth(lineWidth), _lc(nullptr)
+Speedometer::Speedometer(NumericDataSource<double> *source, int subdivisions, int lineWidth) : source(source), _subdivisions(subdivisions), _lineWidth(lineWidth), _lc(nullptr)
 {
   _dataMin = source->getMin();
   _dataMax = source->getMax();
@@ -13,7 +13,7 @@ Speedometer::Speedometer(DoubleDataSource *source, int subdivisions, int lineWid
   _name = source->getName() + " (" + source->getUnits() + ") ";
 } 
 
-Speedometer::Speedometer(DoubleDataSource *source, double minData, double maxData, int subdivisions, int lineWidth) : source(source), _dataMin(minData), _dataMax(maxData), _subdivisions(subdivisions), _lineWidth(lineWidth), _lc(nullptr)
+Speedometer::Speedometer(NumericDataSource<double> *source, double minData, double maxData, int subdivisions, int lineWidth) : source(source), _dataMin(minData), _dataMax(maxData), _subdivisions(subdivisions), _lineWidth(lineWidth), _lc(nullptr)
 {
   setFramesPerSecond(FRAMERATE);
 

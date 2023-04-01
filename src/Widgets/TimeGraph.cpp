@@ -9,7 +9,7 @@
 #define H_PADDING 40
 #define V_PADDING 20
 
-TimeGraph::TimeGraph(DoubleDataSource *source, bool dropBounds, uint64_t duration) : source(source), dropBounds(dropBounds), fixedBounds(false)
+TimeGraph::TimeGraph(NumericDataSource<double> *source, bool dropBounds, uint64_t duration) : source(source), dropBounds(dropBounds), fixedBounds(false)
 {
   setFramesPerSecond(FRAMERATE);
 
@@ -23,7 +23,7 @@ TimeGraph::TimeGraph(DoubleDataSource *source, bool dropBounds, uint64_t duratio
   }
 }
 
-TimeGraph::TimeGraph(DoubleDataSource *source, float min, float max, uint64_t duration) : source(source), dropBounds(false), fixedMin(min), fixedMax(max), fixedBounds(true)
+TimeGraph::TimeGraph(NumericDataSource<double> *source, float min, float max, uint64_t duration) : source(source), dropBounds(false), fixedMin(min), fixedMax(max), fixedBounds(true)
 {
   setFramesPerSecond(FRAMERATE);
 

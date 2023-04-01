@@ -6,7 +6,7 @@
 #include "Packets.h"
 #include <string>
 #include "ActivePage.h"
-#include "DoubleDataSource.h"
+#include "NumericDataSource.h"
 #include <mutex>
 
 class MainPage;
@@ -15,7 +15,7 @@ class SensorPage;
 constexpr int WIDTH = 1024;
 constexpr int HEIGHT = 600;
 
-void buffTester(DoubleDataSource *source, double start = 20);
+void buffTester(NumericDataSource<double> *source, double start = 20);
 
 /**
  * Main application handler.
