@@ -1,6 +1,6 @@
 #pragma once
 #include <JuceHeader.h>
-#include "Main/NumericDataSource.h"
+#include "DataSources/NumericDataSource.h"
 
 class MapComponent : public juce::Component
 {

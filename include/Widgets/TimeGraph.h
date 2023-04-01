@@ -1,7 +1,7 @@
 #pragma once
 #include <JuceHeader.h>
 #include <deque>
-#include "Main/NumericDataSource.h"
+#include "DataSources/NumericDataSource.h"
 #include <stdint.h>
 
 class TimeGraph : public juce::AnimatedAppComponent

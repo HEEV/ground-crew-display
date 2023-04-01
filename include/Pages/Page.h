@@ -5,7 +5,7 @@
 #include "Main/PageSwitchComponent.h"
 #include <string>
 #include "Main/ActivePage.h"
-#include "Main/Sources.h"
+#include "DataSources/Sources.h"
 
 class Page : public juce::AnimatedAppComponent
 {

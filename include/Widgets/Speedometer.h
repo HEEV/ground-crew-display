@@ -7,7 +7,7 @@
 
 #include "LapCounter.h"
 #include <float.h>
-#include "Main/NumericDataSource.h"
+#include "DataSources/NumericDataSource.h"
 
 /**
  * A speedometer JUCE widget, with which to display car data in a

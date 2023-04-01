@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Main/DataSource.h"
-#include "Main/NumericDataSource.h"
+#include "DataSources/DataSource.h"
+#include "DataSources/NumericDataSource.h"
 
 // The amount of data we want to store in milliseconds (for most sources)
 constexpr uint64_t DEFAULT_DURATION = 300000;
@@ -15,7 +15,7 @@ namespace Sources
   inline NumericDataSource<double> wind = NumericDataSource<double>(DEFAULT_DURATION, "Wind", "MPH");
   inline NumericDataSource<double> tilt = NumericDataSource<double>(DEFAULT_DURATION, "Tilt", "°");
 
-  inline NumericDataSource<double> latency = NumericDataSource<double>(5000, "Latency", "ms");
+  inline NumericDataSource<unsigned int> latency = NumericDataSource<unsigned int>(2000, "Latency", "ms");
 
   inline void
   commitAllBuffers()

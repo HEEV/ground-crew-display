@@ -9,6 +9,7 @@
 #include "Main/PageSwitchComponent.h"
 #include "Pages/Page.h"
 #include "Widgets/LapCounter.h"
+#include "Widgets/InformationWidget.h"
 
 class MainPage : public Page
 {
@@ -31,6 +32,8 @@ private:
   TimeGraph _engTemp;
 
   LapCounter _lapCounter;
-  
+
+  InformationWidget _info;
+
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainPage)
 };

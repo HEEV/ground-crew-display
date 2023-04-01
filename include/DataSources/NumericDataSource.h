@@ -1,9 +1,10 @@
 #pragma once
 
-#include "Main/DataSource.h"
+#include "DataSources/DataSource.h"
 #include <float.h>
 #include <string>
 #include <type_traits>
+#include <limits>
 
 template <typename T>
 concept arithmetic = std::integral<T> or std::floating_point<T>;
@@ -15,11 +16,11 @@ public:
   NumericDataSource(uint64_t maxDuration, std::string name = "<unknown name>", std::string units = "<unknown units>") : DataSource<T>(maxDuration, name, units)
   {
     this->onDataAdded(std::function([this](T value)
-                              { whenDataAdded(value); }));
+                                    { whenDataAdded(value); }));
     this->onDataDropped(std::function([this](T value)
-                                { whenDataDropped(value); }));
+                                      { whenDataDropped(value); }));
     this->onDataCleared(std::function([this]()
-                                { whenDataCleared(); }));
+                                      { whenDataCleared(); }));
   }
 
   bool canInterpolateAt(uint64_t time)
@@ -75,6 +76,10 @@ public:
   {
     if (this->empty())
     {
+      if (std::numeric_limits<T>::has_quiet_NaN)
+      {
+        return std::numeric_limits<T>::quiet_NaN();
+      }
       return 0;
     }
 
@@ -97,11 +102,11 @@ public:
   }
 
 private:
-  T min = DBL_MAX;
-  T max = DBL_MIN;
+  T min = std::numeric_limits<T>::max();
+  T max = std::numeric_limits<T>::min();
 
-  T globalMin = DBL_MAX;
-  T globalMax = DBL_MIN;
+  T globalMin = std::numeric_limits<T>::max();
+  T globalMax = std::numeric_limits<T>::min();
 
   void whenDataAdded(T value)
   {
@@ -126,14 +131,14 @@ private:
   {
     if (this->size() == 0)
     {
-      min = DBL_MAX;
-      max = DBL_MIN;
+      min = std::numeric_limits<T>::max();
+      max = std::numeric_limits<T>::min();
       return;
     }
 
     bool globalsNeedUpdate = false;
 
-    // If we drop the bounds we have to recalculate
+    // If we drop either bound we have to recalculate
     if (min == value)
     {
       min = *std::min_element(this->data.begin(), this->data.end());
@@ -154,8 +159,8 @@ private:
 
   void whenDataCleared()
   {
-    min = DBL_MAX;
-    max = DBL_MIN;
+    min = std::numeric_limits<T>::max();
+    max = std::numeric_limits<T>::min();
 
     globalMin = min;
     globalMax = max;

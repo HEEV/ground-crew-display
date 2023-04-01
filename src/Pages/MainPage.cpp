@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <Packets.h>
 #include "Main/ActivePage.h"
-#include "Main/Sources.h"
+#include "DataSources/Sources.h"
 
 // Main JUCE component
 MainPage::MainPage(GroundCrewDisplay::MainWindow *window) : Page(window, ActivePage::MainPage), _wind(&Sources::wind, -40.0f, 40.0f), _windGraph(&Sources::wind, -40.0f, 40.0f, 250000),
@@ -22,6 +22,8 @@ MainPage::MainPage(GroundCrewDisplay::MainWindow *window) : Page(window, ActiveP
   addAndMakeVisible(_engTemp);
 
   addAndMakeVisible(_lapCounter);
+
+  addAndMakeVisible(_info);
 }
 
 void MainPage::resized()
@@ -36,6 +38,8 @@ void MainPage::resized()
   _map.setBounds(0, getHeight() - 150, 300, 150);
 
   _lapCounter.setBounds(400, getHeight() - 150, 300, 150);
+
+  _info.setBounds(750, getHeight() - 150, 350, 150);
 
   displayPageSwitcher();
 }      

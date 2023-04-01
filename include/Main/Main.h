@@ -6,7 +6,7 @@
 #include "Packets.h"
 #include <string>
 #include "ActivePage.h"
-#include "NumericDataSource.h"
+#include "DataSources/NumericDataSource.h"
 #include <mutex>
 
 class MainPage;
