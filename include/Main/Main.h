@@ -1,12 +1,13 @@
 #pragma once
 
 #include <JuceHeader.h>
-#include "CommunicationManager.h"
+#include <CommunicationManager.h>
 #include <locale>
 #include "Packets.h"
 #include <string>
 #include "ActivePage.h"
 #include "DoubleDataSource.h"
+#include <mutex>
 
 class MainPage;
 class SensorPage;
@@ -14,7 +15,7 @@ class SensorPage;
 constexpr int WIDTH = 1024;
 constexpr int HEIGHT = 600;
 
-void buffTester(DoubleDataSource* source, double start = 20);
+void buffTester(DoubleDataSource *source, double start = 20);
 
 /**
  * Main application handler.
@@ -52,6 +53,8 @@ public:
   };
 
 private:
-  CommunicationManager *cmanager;
+  CommunicationManager cmanager;
   std::unique_ptr<MainWindow> mainWindow;
+
+  void checkTrueRaceEpoch();
 };

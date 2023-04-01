@@ -1,6 +1,7 @@
 #pragma once
 
 #include <JuceHeader.h>
+#include <CommunicationManager.h>
 #include "Widgets/Speedometer.h"
 #include "Widgets/TimeGraph.h"
 #include "Widgets/MapComponent.h"

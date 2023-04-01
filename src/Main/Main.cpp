@@ -11,28 +11,32 @@
 #include "Pages/MainPage.h"
 #include "Pages/SensorPage.h"
 
-GroundCrewDisplay::GroundCrewDisplay()
+GroundCrewDisplay::GroundCrewDisplay() : cmanager("163.11.237.241:5001")
 {
 }
 
 GroundCrewDisplay::~GroundCrewDisplay()
 {
-  // delete cmanager;
 }
 
 void GroundCrewDisplay::initialise(const juce::String &commandLine)
 {
-  // cmanager = new CommunicationManager(DDS_SERVER_IP, false);
+  // Register all packet types and channels we are interested in
+  REGISTER_TYPE_TO_MANAGER(WheelData, "vel", cmanager);
+  REGISTER_TYPE_TO_MANAGER(BatteryVoltage, "bat", cmanager);
+  REGISTER_TYPE_TO_MANAGER(EngineTemp, "enTemp", cmanager);
+  REGISTER_TYPE_TO_MANAGER(GPSPosition, "gps", cmanager);
+  REGISTER_TYPE_TO_MANAGER(WindSpeed, "wind", cmanager);
+  REGISTER_TYPE_TO_MANAGER(CarTilt, "tilt", cmanager);
 
-  std::thread windThread([]()
-                         { buffTester(&Sources::wind); });
-  std::thread speedThread([]()
-                          { buffTester(&Sources::speed); });
-  std::thread engThread([]()
-                        { buffTester(&Sources::engTemp, 421); });
-  windThread.detach();
-  speedThread.detach();
-  engThread.detach();
+  // Add callbacks for when data is recieved on a specified channel.
+  // These callbacks run on a seperate thread, so be careful with data races
+  cmanager.addDataReader("vel", std::function([this](WheelData *data)
+                                              { Sources::speed.bufferData(data->head().timeSent(), data->velocity()); }));
+  cmanager.addDataReader("enTemp", std::function([this](EngineTemp *data)
+                                                 { Sources::engTemp.bufferData(data->head().timeSent(), data->temp()); }));
+  cmanager.addDataReader("wind", std::function([this](WindSpeed *data)
+                                               { Sources::wind.bufferData(data->head().timeSent(), data->headSpeed()); }));
 
   mainWindow.reset(new MainWindow(getApplicationName()));
 }

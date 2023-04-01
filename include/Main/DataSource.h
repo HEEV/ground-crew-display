@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include <utility>
 #include <mutex>
+#include <chrono>
 
 template <typename T>
 class DataSource
@@ -100,9 +101,9 @@ public:
   void commitBuffer()
   {
     std::unique_lock lck(buffMtx);
-    while(!buff.empty())
+    while (!buff.empty())
     {
-      auto& front = buff.front();
+      auto &front = buff.front();
       addData(front.first, front.second);
       buff.pop();
     }
@@ -124,7 +125,6 @@ public:
     }
     else
     {
-
       // The position we want to insert the value before
       std::vector<uint64_t>::iterator beforeIt = std::lower_bound(times.begin(), times.end(), time);
       if (beforeIt != times.end() && *beforeIt == time)
@@ -193,12 +193,14 @@ public:
   {
     return data.back();
   }
-  
-  std::string getName() {
+
+  std::string getName()
+  {
     return name;
   }
 
-  std::string getUnits() {
+  std::string getUnits()
+  {
     return units;
   }
 
