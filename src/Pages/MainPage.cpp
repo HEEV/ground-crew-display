@@ -8,9 +8,9 @@
 #include "Main/Sources.h"
 
 // Main JUCE component
-MainPage::MainPage(GroundCrewDisplay::MainWindow *window) : Page(window, ActivePage::MainPage), _wind(&Sources::wind, 0.0f, 40.0f), _windGraph(&Sources::wind, 0.0f, 40.0f),
-                                                            _map("Tracks/ShellTrack.svg", 1.0f), _engTemp(&Sources::engTemp),
-                                                            _speed(&Sources::speed, 0.0f, 40.0f), _speedGraph(&Sources::speed, false, 3000)
+MainPage::MainPage(GroundCrewDisplay::MainWindow *window) : Page(window, ActivePage::MainPage), _wind(&Sources::wind, -40.0f, 40.0f), _windGraph(&Sources::wind, -40.0f, 40.0f, 250000),
+                                                            _map("Tracks/ShellTrack.svg", 1.0f), _engTemp(&Sources::engTemp, false, 250000),
+                                                            _speed(&Sources::speed, 0.0f, 40.0f), _speedGraph(&Sources::speed, false, 30000)
 {
   addAndMakeVisible(_wind);
   addAndMakeVisible(_windGraph);

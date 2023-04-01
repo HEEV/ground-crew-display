@@ -65,8 +65,8 @@ void TimeGraph::paint(juce::Graphics &g)
 
     if (min == max)
     {
-      min -= 1;
-      max += 1;
+      min -= 2;
+      max += 2;
     }
   }
 

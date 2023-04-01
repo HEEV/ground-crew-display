@@ -3,7 +3,7 @@
 #include "Main/DoubleDataSource.h"
 
 // The amount of data we want to store in milliseconds
-constexpr uint64_t MAX_DURATION = 30000;
+constexpr uint64_t MAX_DURATION = 300000;
 
 namespace Sources
 {
