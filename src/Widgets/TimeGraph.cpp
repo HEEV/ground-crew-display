@@ -3,6 +3,7 @@
 #include <cmath>
 #include <sstream>
 #include <utility>
+#include <stdexcept>
 #include <vector>
 
 #define H_PADDING 40
@@ -63,11 +64,11 @@ void TimeGraph::paint(juce::Graphics &g)
       max = source->getGlobalMax();
     }
 
-    if (min == max)
-    {
-      min -= 2;
-      max += 2;
-    }
+    min = round(min);
+    max = round(max);
+
+    min -= 2;
+    max += 2;
   }
 
   juce::Rectangle bounds = getLocalBounds();
@@ -113,7 +114,16 @@ void TimeGraph::paint(juce::Graphics &g)
           continue;
         }
         time = startTime;
-        value = source->interpolatedAt(startTime);
+
+        // For some reason it stil tries to interpolate here, no idea why, but just in case...
+        try
+        {
+          value = source->interpolatedAt(startTime);
+        }
+        catch (std::runtime_error e)
+        {
+          break;
+        }
       }
 
       float progressX = (time - startTime) / ((float)(endTime - startTime));
@@ -152,9 +162,6 @@ void TimeGraph::paint(juce::Graphics &g)
   g.setColour(juce::Colours::blue);
   g.drawText(source->getName(), H_PADDING, usableHeight, usableWidth, V_PADDING, juce::Justification::centred);
   g.setColour(juce::Colours::black);
-
-  min = round(min * 100) / 100;
-  max = round(max * 100) / 100;
 
   std::stringstream minStream;
   std::stringstream maxStream;

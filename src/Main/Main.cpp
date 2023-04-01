@@ -32,11 +32,17 @@ void GroundCrewDisplay::initialise(const juce::String &commandLine)
   // Add callbacks for when data is recieved on a specified channel.
   // These callbacks run on a seperate thread, so be careful with data races
   cmanager.addDataReader("vel", std::function([this](WheelData *data)
-                                              { Sources::speed.bufferData(data->head().timeSent(), data->velocity()); }));
+                                              {
+                                               Sources::distanceTraveled.bufferData(data->head().timeSent(), data->distTravelled());
+                                               Sources::velocity.bufferData(data->head().timeSent(), data->velocity()); }));
+  cmanager.addDataReader("bat", std::function([this](BatteryVoltage *data)
+                                              { Sources::battery.bufferData(data->head().timeSent(), data->volt()); }));
   cmanager.addDataReader("enTemp", std::function([this](EngineTemp *data)
                                                  { Sources::engTemp.bufferData(data->head().timeSent(), data->temp()); }));
   cmanager.addDataReader("wind", std::function([this](WindSpeed *data)
                                                { Sources::wind.bufferData(data->head().timeSent(), data->headSpeed()); }));
+  cmanager.addDataReader("tilt", std::function([this](CarTilt *data)
+                                               { Sources::tilt.bufferData(data->head().timeSent(), data->angle()); }));
 
   mainWindow.reset(new MainWindow(getApplicationName()));
 }

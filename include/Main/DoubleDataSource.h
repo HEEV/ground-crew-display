@@ -19,17 +19,16 @@ public:
   double getGlobalMin();
   double getGlobalMax();
 
-protected:
-  void onDataAdded(double value) override;
-  void onDataDropped(double value) override;
-  void onClear() override;
-
 private:
   double min = DBL_MAX;
   double max = DBL_MIN;
 
   double globalMin = DBL_MAX;
   double globalMax = DBL_MIN;
+
+  void whenDataAdded(double value);
+  void whenDataDropped(double value);
+  void whenDataCleared();
 
   void updateGlobals();
 };

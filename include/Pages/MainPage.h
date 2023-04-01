@@ -8,12 +8,12 @@
 #include "Main/Main.h"
 #include "Main/PageSwitchComponent.h"
 #include "Pages/Page.h"
+#include "Widgets/LapCounter.h"
 
 class MainPage : public Page
 {
 public:
   MainPage(GroundCrewDisplay::MainWindow* window);
-  ~MainPage() override;
 
   void resized() override;
 
@@ -29,6 +29,8 @@ private:
   MapComponent _map;
 
   TimeGraph _engTemp;
+
+  LapCounter _lapCounter;
   
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainPage)
 };

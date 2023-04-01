@@ -9,8 +9,8 @@
 
 // Main JUCE component
 MainPage::MainPage(GroundCrewDisplay::MainWindow *window) : Page(window, ActivePage::MainPage), _wind(&Sources::wind, -40.0f, 40.0f), _windGraph(&Sources::wind, -40.0f, 40.0f, 250000),
-                                                            _map("Tracks/ShellTrack.svg", 1.0f), _engTemp(&Sources::engTemp, false, 250000),
-                                                            _speed(&Sources::speed, 0.0f, 40.0f), _speedGraph(&Sources::speed, false, 30000)
+                                                            _map(&Sources::distanceTraveled, "Tracks/ShellTrack.svg", 1.0f), _engTemp(&Sources::engTemp, false, 250000),
+                                                            _speed(&Sources::velocity, 0.0f, 40.0f), _speedGraph(&Sources::velocity, false, 30000), _lapCounter(&Sources::velocity, 1, 4)
 {
   addAndMakeVisible(_wind);
   addAndMakeVisible(_windGraph);
@@ -20,10 +20,8 @@ MainPage::MainPage(GroundCrewDisplay::MainWindow *window) : Page(window, ActiveP
 
   addAndMakeVisible(_map);
   addAndMakeVisible(_engTemp);
-}
 
-MainPage::~MainPage()
-{
+  addAndMakeVisible(_lapCounter);
 }
 
 void MainPage::resized()
@@ -36,6 +34,8 @@ void MainPage::resized()
   _speed.setBounds(250, 115, 230, 280);
 
   _map.setBounds(0, getHeight() - 150, 300, 150);
+
+  _lapCounter.setBounds(400, getHeight() - 150, 300, 150);
 
   displayPageSwitcher();
 }      

@@ -11,6 +11,10 @@
 #include <mutex>
 #include <chrono>
 
+template <typename P>
+using valueCallback = std::function<void(P)>;
+using noValueCallback = std::function<void()>;
+
 template <typename T>
 class DataSource
 {
@@ -119,7 +123,7 @@ public:
 
       if (times.empty())
       {
-        onDataAdded(newDataPoint);
+        notifyDataAdded(newDataPoint);
         return;
       }
     }
@@ -137,7 +141,7 @@ public:
       data.insert(data.begin() + dist, newDataPoint);
     }
 
-    onDataAdded(newDataPoint);
+    notifyDataAdded(newDataPoint);
 
     while (!times.empty() && times.back() - times.front() > maxDuration)
     {
@@ -145,8 +149,19 @@ public:
       times.erase(times.begin());
       data.erase(data.begin());
 
-      onDataDropped(erasedValue);
+      notifyDataDropped(erasedValue);
     }
+  }
+
+  void clearData()
+  {
+    std::unique_lock lck(buffMtx);
+    while (!buff.empty())
+    {
+      buff.pop();
+    }
+    times.clear();
+    data.clear();
   }
 
   uint64_t totalDuration()
@@ -204,9 +219,22 @@ public:
     return units;
   }
 
+  void onDataAdded(valueCallback<T> cb)
+  {
+    dataAddCallbacks.push_back(cb);
+  }
+
+  void onDataDropped(valueCallback<T> cb)
+  {
+    dataDropCallbacks.push_back(cb);
+  }
+
+  void onDataCleared(noValueCallback cb)
+  {
+    dataClearCallbacks.push_back(cb);
+  }
+
 protected:
-  virtual void onDataAdded(T value) {}
-  virtual void onDataDropped(T value) {}
   virtual void onClear() {}
 
   uint64_t maxDuration;
@@ -219,6 +247,34 @@ private:
 
   std::string name;
   std::string units;
+
+  std::vector<valueCallback<T>> dataAddCallbacks;
+  std::vector<valueCallback<T>> dataDropCallbacks;
+  std::vector<noValueCallback> dataClearCallbacks;
+
+  void notifyDataAdded(T data)
+  {
+    for (auto cb : dataAddCallbacks)
+    {
+      cb(data);
+    }
+  }
+
+  void notifyDataDropped(T data)
+  {
+    for (auto cb : dataDropCallbacks)
+    {
+      cb(data);
+    }
+  }
+
+  void notifyDataCleared()
+  {
+    for (auto cb : dataClearCallbacks)
+    {
+      cb();
+    }
+  }
 
   std::vector<uint64_t>::iterator timeAtLeftIt(uint64_t time)
   {

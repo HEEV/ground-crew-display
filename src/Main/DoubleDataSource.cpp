@@ -5,6 +5,12 @@
 
 DoubleDataSource::DoubleDataSource(uint64_t maxDuration, std::string name, std::string units) : DataSource<double>(maxDuration, name, units)
 {
+  onDataAdded(std::function([this](double value)
+                            { whenDataAdded(value); }));
+  onDataDropped(std::function([this](double value)
+                            { whenDataDropped(value); }));
+  onDataCleared(std::function([this]()
+                              { whenDataCleared(); }));
 }
 
 bool DoubleDataSource::canInterpolateAt(uint64_t time)
@@ -66,7 +72,7 @@ double DoubleDataSource::getGlobalMax()
   return globalMax;
 }
 
-void DoubleDataSource::onDataAdded(double value)
+void DoubleDataSource::whenDataAdded(double value)
 {
   bool globalsNeedUpdate = false;
 
@@ -85,7 +91,7 @@ void DoubleDataSource::onDataAdded(double value)
   updateGlobals();
 }
 
-void DoubleDataSource::onDataDropped(double value)
+void DoubleDataSource::whenDataDropped(double value)
 {
   if (size() == 0)
   {
@@ -115,7 +121,7 @@ void DoubleDataSource::onDataDropped(double value)
   }
 }
 
-void DoubleDataSource::onClear()
+void DoubleDataSource::whenDataCleared()
 {
   min = DBL_MAX;
   max = DBL_MIN;
