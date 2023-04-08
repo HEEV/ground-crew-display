@@ -19,21 +19,10 @@ public:
   void resized() override;
 
 private:
-  GroundCrewDisplay::MainWindow *mainWindow;
-
   Speedometer _wind;
-  TimeGraph _windGraph;
-
   Speedometer _speed;
-  TimeGraph _speedGraph;
-
   MapComponent _map;
-
-  TimeGraph _engTemp;
-
   LapCounter _lapCounter;
-
-  InformationWidget _info;
 
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainPage)
 };

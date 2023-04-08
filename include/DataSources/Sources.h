@@ -10,10 +10,10 @@ namespace Sources
 {
   inline NumericDataSource<double> velocity = NumericDataSource<double>(DEFAULT_DURATION, "Velocity", "MPH");
   inline NumericDataSource<double> distanceTraveled = NumericDataSource<double>(1000, "Distance Traveled", "m? ft? idk");
-  inline NumericDataSource<double> battery = NumericDataSource<double>(DEFAULT_DURATION, "Battery", "V");
-  inline NumericDataSource<double> engTemp = NumericDataSource<double>(DEFAULT_DURATION, "Engine Temperature", "°C");
+  inline NumericDataSource<double> battery = NumericDataSource<double>(DEFAULT_DURATION, "Battery", "Volts");
+  inline NumericDataSource<double> engTemp = NumericDataSource<double>(DEFAULT_DURATION, "Engine Temperature", "Degrees Celsius");
   inline NumericDataSource<double> wind = NumericDataSource<double>(DEFAULT_DURATION, "Wind", "MPH");
-  inline NumericDataSource<double> tilt = NumericDataSource<double>(DEFAULT_DURATION, "Tilt", "°");
+  inline NumericDataSource<double> tilt = NumericDataSource<double>(DEFAULT_DURATION, "Tilt", "Degrees");
 
   inline NumericDataSource<unsigned int> latency = NumericDataSource<unsigned int>(2000, "Latency", "ms");
 

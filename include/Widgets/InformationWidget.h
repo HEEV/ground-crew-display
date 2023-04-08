@@ -4,14 +4,13 @@
 #include <JuceHeader.h>
 #include <stdint.h>
 
-class InformationWidget : public juce::AnimatedAppComponent
+class InformationWidget : public juce::Component
 {
 public:
   InformationWidget();
 
   void paint(juce::Graphics &g) override;
   void resized() override {}
-  void update() override {}
 
   static void checkRaceStart();
 

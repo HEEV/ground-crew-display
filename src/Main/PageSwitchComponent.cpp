@@ -20,10 +20,7 @@ void PageSwitchComponent::paint(juce::Graphics &g)
 {
   g.fillAll(getLookAndFeel().findColour(DocumentWindow::backgroundColourId));
 
-  juce::PathStrokeType borderStroke(2, juce::PathStrokeType::JointStyle::curved, juce::PathStrokeType::EndCapStyle::rounded);
-  juce::Path borderPath;
-  borderPath.addRectangle(0, 0, getWidth(), getHeight());
-  g.strokePath(borderPath, borderStroke);
+  g.drawLine(0, 0, 0, getHeight(), 2);
 
   std::list<juce::TextButton *>::iterator it = buttons.begin();
   int y = 10;

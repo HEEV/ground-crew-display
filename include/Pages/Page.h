@@ -6,6 +6,7 @@
 #include <string>
 #include "Main/ActivePage.h"
 #include "DataSources/Sources.h"
+#include "Widgets/InformationWidget.h"
 
 class Page : public juce::AnimatedAppComponent
 {
@@ -18,10 +19,16 @@ public:
   virtual void resized() override {}
 
 protected:
-  void displayPageSwitcher();
+  void displayRightMargin();
+
+  int getUsableWidth();
+  int getUsableHeight();
+
   const GroundCrewDisplay::MainWindow *mainWindow;
 
 private:
   PageSwitchComponent pageSwitcher;
+  InformationWidget information;
+  
   bool isMainPage;
 };

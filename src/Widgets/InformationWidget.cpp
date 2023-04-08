@@ -13,6 +13,7 @@ void InformationWidget::paint(juce::Graphics &g)
   static std::string versionStr = juce::JUCEApplication::getInstance()->getApplicationName().toStdString() + " " + juce::JUCEApplication::getInstance()->getApplicationVersion().toStdString();
 
   g.fillAll(getLookAndFeel().findColour(DocumentWindow::backgroundColourId));
+  g.drawLine(0, 0, 0, getHeight(), 2);
 
   juce::DrawableText versionText;
   g.drawText(versionStr, 0, 0, getWidth(), 10, juce::Justification::centred);
@@ -45,7 +46,6 @@ void InformationWidget::paint(juce::Graphics &g)
   }
 
   g.drawText(startTimeStr, 0, 28, getWidth(), 10, juce::Justification::centred);
-
   g.drawText("Average latency: " + std::to_string(Sources::latency.avg()) + "ms", 0, 42, getWidth(), 10, juce::Justification::centred);
 }
 

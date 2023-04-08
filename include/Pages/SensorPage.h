@@ -1,29 +1,22 @@
 #pragma once
 
 #include <JuceHeader.h>
-#include "Widgets/Speedometer.h"
 #include "Widgets/TimeGraph.h"
-#include "Widgets/MapComponent.h"
 #include "Main/Main.h"
-#include "Main/PageSwitchComponent.h"
+#include "Pages/Page.h"
 
-class SensorPage : public juce::AnimatedAppComponent
+class SensorPage : public Page
 {
 public:
-  SensorPage(GroundCrewDisplay::MainWindow *window);
-  ~SensorPage() override;
+  SensorPage(GroundCrewDisplay::MainWindow* window);
 
-  void update() override;
-  void paint(juce::Graphics &) override;
   void resized() override;
 
 private:
-  GroundCrewDisplay::MainWindow *mainWindow;
 
-  Speedometer _wind;
-  TimeGraph _windGraph;
-
-  PageSwitchComponent _pageSwitcher;
+  TimeGraph windGraph;
+  TimeGraph voltageGraph;
+  TimeGraph engTempGraph;
 
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SensorPage)
 };
