@@ -1,23 +1,23 @@
 #pragma once
 #include <JuceHeader.h>
+#include "DataSources/Sources.h"
 
 class Tiltmeter : public Component
 {
 public:
-	Tiltmeter(float tiltLimit);
+	Tiltmeter(NumericDataSource<double> *source, double tiltLimit);
 	~Tiltmeter() override;
 
 	void paint(Graphics& g) override;
 	void resized() override;
 
-	void setCurrentTilt(float tilt);
-
 private:
 	float _tiltLimit;
-	float _curTilt;
-	Point<float> _guagePos;
+  double _curTilt;
+  Point<float> _guagePos;
+  NumericDataSource<double>* _source;
 
-	// Data used for drawing
+  // Data used for drawing
 	Rectangle<float> _travelLine;
 	String _labelText;
 	Font _font;

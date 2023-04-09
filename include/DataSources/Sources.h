@@ -15,7 +15,7 @@ namespace Sources
   inline NumericDataSource<double> wind = NumericDataSource<double>(DEFAULT_DURATION, "Wind", "MPH");
   inline NumericDataSource<double> tilt = NumericDataSource<double>(DEFAULT_DURATION, "Tilt", "Degrees");
 
-  inline NumericDataSource<unsigned int> latency = NumericDataSource<unsigned int>(2000, "Latency", "ms");
+  inline NumericDataSource<unsigned int> latency = NumericDataSource<unsigned int>(5000, "Latency", "ms");
 
   inline void
   commitAllBuffers()

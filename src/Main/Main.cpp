@@ -89,6 +89,15 @@ GroundCrewDisplay::MainWindow::MainWindow(juce::String name)
 
   setPage(ActivePage::MainPage);
 
+  // Forces GUI to be fullscreen when not debugging, but remain windowed for development
+#ifdef DEBUG
+  setResizable(true, true);
+  centreWithSize(WIDTH, HEIGHT);
+#else
+  setResizable(false, false);
+  Desktop::getInstance().setKioskModeComponent(this, false);
+#endif
+
   setVisible(true);
 }
 
@@ -99,6 +108,9 @@ GroundCrewDisplay::MainWindow::~MainWindow()
 
 void GroundCrewDisplay::MainWindow::setPage(ActivePage page)
 {
+  int width = getWidth();
+  int height = getHeight();
+
   juce::Component *newPage;
   switch (page)
   {
@@ -114,12 +126,9 @@ void GroundCrewDisplay::MainWindow::setPage(ActivePage page)
   }
 
   setContentNonOwned(newPage, true);
-  setResizable(true, true);
-
-  // Forces GUI to be fullscreen when not debugging, but remain windowed for development
 #ifdef DEBUG
   setResizable(true, true);
-  centreWithSize(WIDTH, HEIGHT);
+  centreWithSize(width, height);
 #else
   setResizable(false, false);
   Desktop::getInstance().setKioskModeComponent(this, false);

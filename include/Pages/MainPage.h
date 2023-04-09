@@ -3,13 +3,14 @@
 #include <JuceHeader.h>
 #include <CommunicationManager.h>
 #include "Widgets/Speedometer.h"
-#include "Widgets/TimeGraph.h"
 #include "Widgets/MapComponent.h"
 #include "Main/Main.h"
 #include "Main/PageSwitchComponent.h"
 #include "Pages/Page.h"
 #include "Widgets/LapCounter.h"
 #include "Widgets/InformationWidget.h"
+#include "Widgets/DebugRectangle.h"
+#include "Widgets/Tiltmeter.h"
 
 class MainPage : public Page
 {
@@ -19,10 +20,13 @@ public:
   void resized() override;
 
 private:
-  Speedometer _wind;
-  Speedometer _speed;
-  MapComponent _map;
-  LapCounter _lapCounter;
+  Speedometer wind;
+  Speedometer speed;
+  MapComponent map;
+  LapCounter lapCounter;
+  Tiltmeter tiltMeter;
+
+  DebugRectangle rect;
 
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainPage)
 };
