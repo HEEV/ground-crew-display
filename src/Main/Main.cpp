@@ -35,9 +35,11 @@ void GroundCrewDisplay::initialise(const juce::String &commandLine)
   cmanager.addDataReader("vel", std::function([this](WheelData *data)
                                               {
                                                 InformationWidget::checkRaceStart();
-                                               Sources::latency.bufferData(data->head().timeRec(), data->head().timeRec() - data->head().timeSent());
-                                               Sources::distanceTraveled.bufferData(data->head().timeSent(), data->distTravelled());
-                                               Sources::velocity.bufferData(data->head().timeSent(), data->velocity()); }));
+                                                std::cout << data->head().timeRec() << ',' << data->head().timeSent() << std::endl;
+                                                
+                                                Sources::latency.bufferData(data->head().timeRec(), data->head().timeRec() - data->head().timeSent());
+                                                Sources::distanceTraveled.bufferData(data->head().timeSent(), data->distTravelled());
+                                                Sources::velocity.bufferData(data->head().timeSent(), data->velocity()); }));
   cmanager.addDataReader("bat", std::function([this](BatteryVoltage *data)
                                               { 
                                                 InformationWidget::checkRaceStart();

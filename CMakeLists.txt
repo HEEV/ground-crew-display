@@ -23,7 +23,7 @@ juce_add_gui_app(GroundCrewDisplay
     # ICON_BIG ...                      # ICON_* arguments specify a path to an image file to use as an icon
     # ICON_SMALL ...
     # DOCUMENT_EXTENSIONS ...           # Specify file extensions that should be associated with this app
-    COMPANY_NAME "SuperMileage Computer/Electric Team"                  # Specify the name of the app's author
+    COMPANY_NAME "SuperMileage Computer/Computer Team"                  # Specify the name of the app's author
     PRODUCT_NAME "GroundCrewDisplay")     # The name of the final executable, which can differ from the target name
 
 add_compile_definitions($<$<CONFIG:DEBUG>:JUCE_LOG_ASSERTIONS>)
