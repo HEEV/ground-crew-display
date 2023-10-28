@@ -1,0 +1,43 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 519,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "licenses",
+			"destination" : "share/fastrtps",
+			"paths" : 
+			[
+				"lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/LICENSE"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "lib/Fast-DDS-Communication-Manager/lib/Fast-DDS",
+		"source" : "lib/Fast-DDS-Communication-Manager/lib/Fast-DDS"
+	}
+}

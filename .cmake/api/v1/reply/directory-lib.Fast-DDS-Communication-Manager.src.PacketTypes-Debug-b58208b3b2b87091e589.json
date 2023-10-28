@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "lib/Fast-DDS-Communication-Manager/src/PacketTypes",
+		"source" : "lib/Fast-DDS-Communication-Manager/src/PacketTypes"
+	}
+}

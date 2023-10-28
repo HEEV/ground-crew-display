@@ -88,7 +88,7 @@ public:
     {
       sum += value;
     }
-    return sum / this->size();
+    return (sum / this->size());
   }
 
   T getGlobalMin()

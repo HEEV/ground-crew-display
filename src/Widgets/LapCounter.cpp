@@ -3,8 +3,8 @@
 #include <string>
 
 LapCounter::LapCounter(NumericDataSource<double> *velSource, double lapLength, unsigned lapAmount) : _velSource(velSource), _lapCounter(_lapCount),
-                                                                                            _lapProgress(_lapDist), _lapCount(0),
-                                                                                            _lapDist(0), _lapLength(lapLength), _lapAmount(lapAmount), _finished(false)
+                                                                                                     _lapProgress(_lapDist), _lapCount(0),
+                                                                                                     _lapDist(0), _lapLength(lapLength), _lapAmount(lapAmount), _finished(false)
 {
   _lapCounter.setColour(_lapCounter.foregroundColourId, Colour(253, 185, 19));
   _lapProgress.setColour(_lapCounter.foregroundColourId, Colour(253, 185, 19));

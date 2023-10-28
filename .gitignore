@@ -18,3 +18,4 @@ CPackSourceConfig.cmake
 
 .vscode/
 build/
+*.ninja

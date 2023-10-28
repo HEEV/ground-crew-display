@@ -1,0 +1,473 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						17
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.15"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"build" : "lib",
+					"childIndexes" : 
+					[
+						2,
+						6
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-lib-Debug-c12f15c6f888b43a891c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.15"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "lib"
+				},
+				{
+					"build" : "lib/JUCE",
+					"childIndexes" : 
+					[
+						3,
+						4
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-lib.JUCE-Debug-30963b2670f1cc898f37.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.15"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 1,
+					"source" : "lib/JUCE"
+				},
+				{
+					"build" : "lib/JUCE/modules",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-lib.JUCE.modules-Debug-7fe0e528e6effbe7629b.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.15"
+					},
+					"parentIndex" : 2,
+					"projectIndex" : 1,
+					"source" : "lib/JUCE/modules"
+				},
+				{
+					"build" : "lib/JUCE/extras/Build",
+					"childIndexes" : 
+					[
+						5
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-lib.JUCE.extras.Build-Debug-bec60ffcc54798cfc738.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.15"
+					},
+					"parentIndex" : 2,
+					"projectIndex" : 1,
+					"source" : "lib/JUCE/extras/Build"
+				},
+				{
+					"build" : "lib/JUCE/extras/Build/juceaide",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-lib.JUCE.extras.Build.juceaide-Debug-38689481ed192bba0106.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.15"
+					},
+					"parentIndex" : 4,
+					"projectIndex" : 1,
+					"source" : "lib/JUCE/extras/Build/juceaide"
+				},
+				{
+					"build" : "lib/Fast-DDS-Communication-Manager",
+					"childIndexes" : 
+					[
+						7,
+						15
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-lib.Fast-DDS-Communication-Manager-Debug-f26dd9dd9772c582c12a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.15"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 2,
+					"source" : "lib/Fast-DDS-Communication-Manager",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"build" : "lib/Fast-DDS-Communication-Manager/lib",
+					"childIndexes" : 
+					[
+						8,
+						14
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-lib.Fast-DDS-Communication-Manager.lib-Debug-ff958671aaf17c13c71c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.15"
+					},
+					"parentIndex" : 6,
+					"projectIndex" : 2,
+					"source" : "lib/Fast-DDS-Communication-Manager/lib"
+				},
+				{
+					"build" : "lib/Fast-DDS-Communication-Manager/lib/Fast-DDS",
+					"childIndexes" : 
+					[
+						9,
+						11,
+						12,
+						13
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-lib.Fast-DDS-Communication-Manager.lib.Fast-DDS-Debug-ac0065cc72d47c14f029.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16.3"
+					},
+					"parentIndex" : 7,
+					"projectIndex" : 3,
+					"source" : "lib/Fast-DDS-Communication-Manager/lib/Fast-DDS"
+				},
+				{
+					"build" : "lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/thirdparty/fastcdr",
+					"childIndexes" : 
+					[
+						10
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-lib.Fast-DDS-Communication-Manager.lib.Fast-DDS.thirdparty.fastcdr-Debug-ac7ebb9858eb452b1226.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.15"
+					},
+					"parentIndex" : 8,
+					"projectIndex" : 4,
+					"source" : "lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/thirdparty/fastcdr"
+				},
+				{
+					"build" : "lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/thirdparty/fastcdr/src/cpp",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-lib.Fast-DDS-Communication-Manager.lib.Fast-DDS.thirdparty.fastcdr.src.cpp-Debug-fe43c177f536a8b17a8d.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.15"
+					},
+					"parentIndex" : 9,
+					"projectIndex" : 4,
+					"source" : "lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/thirdparty/fastcdr/src/cpp",
+					"targetIndexes" : 
+					[
+						2
+					]
+				},
+				{
+					"build" : "lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/src/cpp",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-lib.Fast-DDS-Communication-Manager.lib.Fast-DDS.src.cpp-Debug-f7495e1ac2b4687722b8.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16.3"
+					},
+					"parentIndex" : 8,
+					"projectIndex" : 3,
+					"source" : "lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/src/cpp",
+					"targetIndexes" : 
+					[
+						3
+					]
+				},
+				{
+					"build" : "lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/thirdparty/optionparser",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-lib.Fast-DDS-Communication-Manager.lib.Fast-DDS.thirdparty.optionparser-Debug-7a11a7d4b3df56741fc4.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16.3"
+					},
+					"parentIndex" : 8,
+					"projectIndex" : 3,
+					"source" : "lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/thirdparty/optionparser"
+				},
+				{
+					"build" : "lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/test",
+					"jsonFile" : "directory-lib.Fast-DDS-Communication-Manager.lib.Fast-DDS.test-Debug-290486c6c2a57034ed65.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16.3"
+					},
+					"parentIndex" : 8,
+					"projectIndex" : 3,
+					"source" : "lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/test"
+				},
+				{
+					"build" : "lib/Fast-DDS-Communication-Manager/lib/fmt",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-lib.Fast-DDS-Communication-Manager.lib.fmt-Debug-bc3396c67872a0cf76a9.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"parentIndex" : 7,
+					"projectIndex" : 5,
+					"source" : "lib/Fast-DDS-Communication-Manager/lib/fmt",
+					"targetIndexes" : 
+					[
+						4
+					]
+				},
+				{
+					"build" : "lib/Fast-DDS-Communication-Manager/src",
+					"childIndexes" : 
+					[
+						16
+					],
+					"jsonFile" : "directory-lib.Fast-DDS-Communication-Manager.src-Debug-83419203b538e3d8716c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.15"
+					},
+					"parentIndex" : 6,
+					"projectIndex" : 2,
+					"source" : "lib/Fast-DDS-Communication-Manager/src"
+				},
+				{
+					"build" : "lib/Fast-DDS-Communication-Manager/src/PacketTypes",
+					"jsonFile" : "directory-lib.Fast-DDS-Communication-Manager.src.PacketTypes-Debug-b58208b3b2b87091e589.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.15"
+					},
+					"parentIndex" : 15,
+					"projectIndex" : 2,
+					"source" : "lib/Fast-DDS-Communication-Manager/src/PacketTypes"
+				},
+				{
+					"build" : "src",
+					"childIndexes" : 
+					[
+						18,
+						19,
+						20
+					],
+					"jsonFile" : "directory-src-Debug-b6cf2213fc5053b67c22.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.15"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src"
+				},
+				{
+					"build" : "src/Main",
+					"jsonFile" : "directory-src.Main-Debug-cabbfee94651f696d0ae.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.15"
+					},
+					"parentIndex" : 17,
+					"projectIndex" : 0,
+					"source" : "src/Main"
+				},
+				{
+					"build" : "src/Widgets",
+					"jsonFile" : "directory-src.Widgets-Debug-3696fb4445a5e442a41d.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.15"
+					},
+					"parentIndex" : 17,
+					"projectIndex" : 0,
+					"source" : "src/Widgets"
+				},
+				{
+					"build" : "src/Pages",
+					"jsonFile" : "directory-src.Pages-Debug-88c9e944f89a0cf5df31.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.15"
+					},
+					"parentIndex" : 17,
+					"projectIndex" : 0,
+					"source" : "src/Pages"
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1,
+						2
+					],
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						17,
+						18,
+						19,
+						20
+					],
+					"name" : "GroundCrewDisplay",
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						2,
+						3,
+						4,
+						5
+					],
+					"name" : "JUCE",
+					"parentIndex" : 0
+				},
+				{
+					"childIndexes" : 
+					[
+						3,
+						5
+					],
+					"directoryIndexes" : 
+					[
+						6,
+						7,
+						15,
+						16
+					],
+					"name" : "CommunicationManager",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"childIndexes" : 
+					[
+						4
+					],
+					"directoryIndexes" : 
+					[
+						8,
+						11,
+						12,
+						13
+					],
+					"name" : "fastrtps",
+					"parentIndex" : 2,
+					"targetIndexes" : 
+					[
+						3
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						9,
+						10
+					],
+					"name" : "fastcdr",
+					"parentIndex" : 3,
+					"targetIndexes" : 
+					[
+						2
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						14
+					],
+					"name" : "FMT",
+					"parentIndex" : 2,
+					"targetIndexes" : 
+					[
+						4
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 6,
+					"id" : "CommunicationManager::@b8d797db5601c309cd56",
+					"jsonFile" : "target-CommunicationManager-Debug-ca3f4d06ec950b6aee26.json",
+					"name" : "CommunicationManager",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "GroundCrewDisplay::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-GroundCrewDisplay-Debug-1fcd6f47b5d6baaa434f.json",
+					"name" : "GroundCrewDisplay",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 10,
+					"id" : "fastcdr::@3b5a9a9ee24fada2bd3c",
+					"jsonFile" : "target-fastcdr-Debug-fb93af77e72e9cf0e938.json",
+					"name" : "fastcdr",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 11,
+					"id" : "fastrtps::@e22257a4bdba049a3f8d",
+					"jsonFile" : "target-fastrtps-Debug-9070886a453e2bcd4556.json",
+					"name" : "fastrtps",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 14,
+					"id" : "fmt::@40db4e23f0df0d7b8d1f",
+					"jsonFile" : "target-fmt-Debug-010ebe1654d489e9c85d.json",
+					"name" : "fmt",
+					"projectIndex" : 5
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/arkinsolomon/Documents/ground-crew-display",
+		"source" : "/Users/arkinsolomon/Documents/ground-crew-display"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

@@ -15,8 +15,6 @@ class SensorPage;
 constexpr int WIDTH = 1024;
 constexpr int HEIGHT = 600;
 
-void buffTester(NumericDataSource<double> *source, double start = 20);
-
 /**
  * Main application handler.
  */
@@ -55,6 +53,7 @@ public:
 private:
   CommunicationManager cmanager;
   std::unique_ptr<MainWindow> mainWindow;
-
-  void checkTrueRaceEpoch();
+  std::thread t1;
 };
+
+[[noreturn]] void createData();

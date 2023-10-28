@@ -1,0 +1,146 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"lib/Fast-DDS-Communication-Manager/lib/fmt/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 313,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 326,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 329,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 332,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 334,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"lib/Fast-DDS-Communication-Manager/lib/fmt/libfmtd.a"
+			],
+			"targetId" : "fmt::@40db4e23f0df0d7b8d1f",
+			"targetIndex" : 4,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "include/fmt",
+			"paths" : 
+			[
+				"lib/Fast-DDS-Communication-Manager/lib/fmt/include/fmt/args.h",
+				"lib/Fast-DDS-Communication-Manager/lib/fmt/include/fmt/chrono.h",
+				"lib/Fast-DDS-Communication-Manager/lib/fmt/include/fmt/color.h",
+				"lib/Fast-DDS-Communication-Manager/lib/fmt/include/fmt/compile.h",
+				"lib/Fast-DDS-Communication-Manager/lib/fmt/include/fmt/core.h",
+				"lib/Fast-DDS-Communication-Manager/lib/fmt/include/fmt/format.h",
+				"lib/Fast-DDS-Communication-Manager/lib/fmt/include/fmt/format-inl.h",
+				"lib/Fast-DDS-Communication-Manager/lib/fmt/include/fmt/os.h",
+				"lib/Fast-DDS-Communication-Manager/lib/fmt/include/fmt/ostream.h",
+				"lib/Fast-DDS-Communication-Manager/lib/fmt/include/fmt/printf.h",
+				"lib/Fast-DDS-Communication-Manager/lib/fmt/include/fmt/ranges.h",
+				"lib/Fast-DDS-Communication-Manager/lib/fmt/include/fmt/std.h",
+				"lib/Fast-DDS-Communication-Manager/lib/fmt/include/fmt/xchar.h"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "lib/cmake/fmt",
+			"paths" : 
+			[
+				"lib/Fast-DDS-Communication-Manager/lib/fmt/fmt-config.cmake",
+				"lib/Fast-DDS-Communication-Manager/lib/fmt/fmt-config-version.cmake"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 3,
+			"component" : "Unspecified",
+			"destination" : "lib/cmake/fmt",
+			"exportName" : "fmt-targets",
+			"exportTargets" : 
+			[
+				{
+					"id" : "fmt::@40db4e23f0df0d7b8d1f",
+					"index" : 4
+				},
+				{
+					"id" : "fmt-header-only::@40db4e23f0df0d7b8d1f",
+					"index" : 0
+				}
+			],
+			"paths" : 
+			[
+				"lib/Fast-DDS-Communication-Manager/lib/fmt/CMakeFiles/Export/b834597d9b1628ff12ae4314c3a2e4b8/fmt-targets.cmake"
+			],
+			"type" : "export"
+		},
+		{
+			"backtrace" : 4,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"isOptional" : true,
+			"paths" : 
+			[
+				"lib/Fast-DDS-Communication-Manager/lib/fmt/$<TARGET_PDB_FILE:fmt",
+				"lib/Fast-DDS-Communication-Manager/lib/fmt/fmt-header-only>"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 5,
+			"component" : "Unspecified",
+			"destination" : "lib/pkgconfig",
+			"paths" : 
+			[
+				"lib/Fast-DDS-Communication-Manager/lib/fmt/fmt.pc"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "lib/Fast-DDS-Communication-Manager/lib/fmt",
+		"source" : "lib/Fast-DDS-Communication-Manager/lib/fmt"
+	}
+}

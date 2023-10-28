@@ -45,6 +45,7 @@ void InformationWidget::paint(juce::Graphics &g)
     startTimeStr = "Race not started";
   }
 
+//  std::cout << Sources::latency.avg() << std::endl;
   g.drawText(startTimeStr, 0, 28, getWidth(), 10, juce::Justification::centred);
   g.drawText("Average latency: " + std::to_string(Sources::latency.avg()) + "ms", 0, 42, getWidth(), 10, juce::Justification::centred);
 }

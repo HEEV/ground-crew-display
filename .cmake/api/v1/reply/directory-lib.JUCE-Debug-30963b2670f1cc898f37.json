@@ -1,0 +1,59 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"lib/JUCE/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 146,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib/cmake/JUCE-7.0.5",
+			"paths" : 
+			[
+				"lib/JUCE/JUCEConfigVersion.cmake",
+				"lib/JUCE/JUCEConfig.cmake",
+				"lib/JUCE/extras/Build/CMake/JUCECheckAtomic.cmake",
+				"lib/JUCE/extras/Build/CMake/JUCEHelperTargets.cmake",
+				"lib/JUCE/extras/Build/CMake/JUCEModuleSupport.cmake",
+				"lib/JUCE/extras/Build/CMake/JUCEUtils.cmake",
+				"lib/JUCE/extras/Build/CMake/JuceLV2Defines.h.in",
+				"lib/JUCE/extras/Build/CMake/LaunchScreen.storyboard",
+				"lib/JUCE/extras/Build/CMake/PIPAudioProcessor.cpp.in",
+				"lib/JUCE/extras/Build/CMake/PIPAudioProcessorWithARA.cpp.in",
+				"lib/JUCE/extras/Build/CMake/PIPComponent.cpp.in",
+				"lib/JUCE/extras/Build/CMake/PIPConsole.cpp.in",
+				"lib/JUCE/extras/Build/CMake/RecentFilesMenuTemplate.nib",
+				"lib/JUCE/extras/Build/CMake/UnityPluginGUIScript.cs.in",
+				"lib/JUCE/extras/Build/CMake/checkBundleSigning.cmake",
+				"lib/JUCE/extras/Build/CMake/copyDir.cmake",
+				"lib/JUCE/extras/Build/CMake/juce_runtime_arch_detection.cpp"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "lib/JUCE",
+		"source" : "lib/JUCE"
+	}
+}

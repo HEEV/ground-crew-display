@@ -1,0 +1,618 @@
+{
+	"inputs" : 
+	[
+		{
+			"path" : "CMakeLists.txt"
+		},
+		{
+			"path" : "CMakeFiles/3.27.5/CMakeSystem.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/Platform/Darwin-Initialize.cmake"
+		},
+		{
+			"path" : "CMakeFiles/3.27.5/CMakeCCompiler.cmake"
+		},
+		{
+			"path" : "CMakeFiles/3.27.5/CMakeCXXCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/CMakeSystemSpecificInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/CMakeGenericSystem.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/CMakeInitializeConfigs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/Platform/Darwin.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/Platform/UnixPaths.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/CMakeCInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/CMakeLanguageInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/Compiler/AppleClang-C.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/Compiler/Clang.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/Compiler/GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/Platform/Apple-AppleClang-C.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/Platform/Apple-Clang-C.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/Platform/Apple-Clang.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/CMakeCommonLanguageInclude.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/CMakeCXXInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/CMakeLanguageInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/Compiler/AppleClang-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/Compiler/Clang.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/Platform/Apple-AppleClang-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/Platform/Apple-Clang-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/Platform/Apple-Clang.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/CMakeCommonLanguageInclude.cmake"
+		},
+		{
+			"path" : "GroundCrewDisplay_artefacts/JuceLibraryCode/GroundCrewDisplay/Info.plist"
+		},
+		{
+			"path" : "lib/CMakeLists.txt"
+		},
+		{
+			"path" : "lib/JUCE/CMakeLists.txt"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/CMakeDependentOption.cmake"
+		},
+		{
+			"path" : "lib/JUCE/extras/Build/CMake/JUCEModuleSupport.cmake"
+		},
+		{
+			"path" : "lib/JUCE/extras/Build/CMake/JUCEHelperTargets.cmake"
+		},
+		{
+			"path" : "lib/JUCE/extras/Build/CMake/JUCECheckAtomic.cmake"
+		},
+		{
+			"path" : "lib/JUCE/extras/Build/CMake/JUCEUtils.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/CMakePackageConfigHelpers.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/WriteBasicConfigVersionFile.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/BasicConfigVersion-ExactVersion.cmake.in"
+		},
+		{
+			"path" : "lib/JUCE/extras/Build/CMake/JUCEConfig.cmake.in"
+		},
+		{
+			"path" : "lib/JUCE/extras/Build/CMake/JUCEConfig.cmake.in"
+		},
+		{
+			"path" : "lib/JUCE/modules/CMakeLists.txt"
+		},
+		{
+			"path" : "lib/JUCE/extras/Build/CMakeLists.txt"
+		},
+		{
+			"path" : "lib/JUCE/extras/Build/juceaide/CMakeLists.txt"
+		},
+		{
+			"path" : "lib/JUCE/tools/JUCEToolsExport.cmake"
+		},
+		{
+			"path" : "lib/Fast-DDS-Communication-Manager/CMakeLists.txt"
+		},
+		{
+			"path" : "lib/Fast-DDS-Communication-Manager/lib/CMakeLists.txt"
+		},
+		{
+			"path" : "lib/Fast-DDS-Communication-Manager/lib/cmake/GetDDSDeps.cmake"
+		},
+		{
+			"path" : "lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/CMakeLists.txt"
+		},
+		{
+			"path" : "lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/cmake/common/check_configuration.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/CheckCXXCompilerFlag.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/Internal/CheckCompilerFlag.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/Internal/CheckFlagCommonConfig.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/Internal/CheckSourceCompiles.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/CheckCXXSourceCompiles.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/Internal/CheckSourceCompiles.cmake"
+		},
+		{
+			"path" : "lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/cmake/common/eprosima_libraries.cmake"
+		},
+		{
+			"path" : "lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/cmake/modules/FindAsio.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"path" : "lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/cmake/modules/FindTinyXML2.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"path" : "lib/Fast-DDS-Communication-Manager/lib/memory/lib/foonathan_memory/cmake/foonathan_memory-config-version.cmake"
+		},
+		{
+			"path" : "lib/Fast-DDS-Communication-Manager/lib/memory/lib/foonathan_memory/cmake/foonathan_memory-config.cmake"
+		},
+		{
+			"path" : "lib/Fast-DDS-Communication-Manager/lib/memory/lib/foonathan_memory/cmake/foonathan_memory-config-noconfig.cmake"
+		},
+		{
+			"path" : "lib/Fast-DDS-Communication-Manager/lib/memory/lib/foonathan_memory/cmake/foonathan_memory-config-version.cmake"
+		},
+		{
+			"path" : "lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/cmake/modules/FindThirdpartyBoost.cmake"
+		},
+		{
+			"path" : "lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/cmake/modules/FindThreads.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/CheckLibraryExists.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/CheckSymbolExists.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/CheckIncludeFile.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"path" : "lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/thirdparty/boost/test/ThirdpartyBoostCompile_test.cpp"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/FindOpenSSL.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/FindPkgConfig.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/CMakeDependentOption.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/CTest.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/CTestUseLaunchers.cmake"
+		},
+		{
+			"path" : "lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/thirdparty/fastcdr/CMakeLists.txt"
+		},
+		{
+			"path" : "lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/thirdparty/fastcdr/cmake/common/check_configuration.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/CheckCXXCompilerFlag.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/TestBigEndian.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/CheckTypeSize.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/CheckIncludeFile.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/CheckIncludeFileCXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/CheckTypeSize.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/CheckIncludeFile.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/CheckIncludeFileCXX.cmake"
+		},
+		{
+			"path" : "lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/thirdparty/fastcdr/cmake/packaging/eProsimaPackaging.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/CPack.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/CPackComponent.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Templates/CPackConfig.cmake.in"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Templates/CPackConfig.cmake.in"
+		},
+		{
+			"path" : "lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/thirdparty/fastcdr/src/cpp/CMakeLists.txt"
+		},
+		{
+			"path" : "lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/thirdparty/fastcdr/cmake/dev/set_sources.cmake"
+		},
+		{
+			"path" : "lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/thirdparty/fastcdr/cmake/dev/generate_msvc_libraries.cmake"
+		},
+		{
+			"path" : "lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/thirdparty/fastcdr/include/fastcdr/config.h.in"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/CMakePackageConfigHelpers.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/WriteBasicConfigVersionFile.cmake"
+		},
+		{
+			"path" : "lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/thirdparty/fastcdr/cmake/packaging/Config.cmake.in"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/BasicConfigVersion-SameMajorVersion.cmake.in"
+		},
+		{
+			"path" : "lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/src/cpp/CMakeLists.txt"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/CheckCXXSourceCompiles.cmake"
+		},
+		{
+			"path" : "lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/cmake/modules/FindThreads.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/CheckLibraryExists.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/CheckSymbolExists.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/CheckIncludeFile.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"path" : "lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/cmake/modules/FindAtomic.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/CheckCXXSourceCompiles.cmake"
+		},
+		{
+			"path" : "lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/cmake/modules/check_shared_mutex_priority.cpp"
+		},
+		{
+			"path" : "lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/include/fastrtps/config.h.in"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/CMakePackageConfigHelpers.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/WriteBasicConfigVersionFile.cmake"
+		},
+		{
+			"path" : "lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/cmake/packaging/Config.cmake.in"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/BasicConfigVersion-SameMajorVersion.cmake.in"
+		},
+		{
+			"path" : "lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/thirdparty/optionparser/CMakeLists.txt"
+		},
+		{
+			"path" : "lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/test/CMakeLists.txt"
+		},
+		{
+			"path" : "lib/Fast-DDS-Communication-Manager/lib/fmt/CMakeLists.txt"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/CMakeParseArguments.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/GNUInstallDirs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/CheckCXXCompilerFlag.cmake"
+		},
+		{
+			"path" : "lib/Fast-DDS-Communication-Manager/lib/fmt/support/cmake/JoinPaths.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/CMakePackageConfigHelpers.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/WriteBasicConfigVersionFile.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/BasicConfigVersion-AnyNewerVersion.cmake.in"
+		},
+		{
+			"path" : "lib/Fast-DDS-Communication-Manager/lib/fmt/support/cmake/fmt.pc.in"
+		},
+		{
+			"path" : "lib/Fast-DDS-Communication-Manager/lib/fmt/support/cmake/fmt-config.cmake.in"
+		},
+		{
+			"path" : "lib/Fast-DDS-Communication-Manager/src/CMakeLists.txt"
+		},
+		{
+			"path" : "lib/Fast-DDS-Communication-Manager/src/PacketTypes/CMakeLists.txt"
+		},
+		{
+			"path" : "src/CMakeLists.txt"
+		},
+		{
+			"path" : "src/Main/CMakeLists.txt"
+		},
+		{
+			"path" : "src/Widgets/CMakeLists.txt"
+		},
+		{
+			"path" : "src/Pages/CMakeLists.txt"
+		}
+	],
+	"kind" : "cmakeFiles",
+	"paths" : 
+	{
+		"build" : "/Users/arkinsolomon/Documents/ground-crew-display",
+		"source" : "/Users/arkinsolomon/Documents/ground-crew-display"
+	},
+	"version" : 
+	{
+		"major" : 1,
+		"minor" : 0
+	}
+}

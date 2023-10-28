@@ -1,0 +1,154 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/src/cpp/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 580,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 589,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 599,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 605,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 621,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 637,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 721,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "headers",
+			"destination" : "include",
+			"paths" : 
+			[
+				"lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/include/fastrtps"
+			],
+			"type" : "directory"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "headers",
+			"destination" : "include",
+			"paths" : 
+			[
+				"lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/include/fastdds"
+			],
+			"type" : "directory"
+		},
+		{
+			"backtrace" : 3,
+			"component" : "headers",
+			"destination" : "include/fastrtps",
+			"paths" : 
+			[
+				"lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/include/fastrtps/config.h"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 4,
+			"component" : "Unspecified",
+			"destination" : "include/fastdds",
+			"paths" : 
+			[
+				"lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/include/fastdds/statistics"
+			],
+			"type" : "directory"
+		},
+		{
+			"backtrace" : 5,
+			"component" : "libraries",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/src/cpp/libfastrtps.a"
+			],
+			"targetId" : "fastrtps::@e22257a4bdba049a3f8d",
+			"targetIndex" : 3,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 6,
+			"component" : "cmake",
+			"destination" : "share/fastrtps/cmake",
+			"exportName" : "fastrtps-static-targets",
+			"exportTargets" : 
+			[
+				{
+					"id" : "fastrtps::@e22257a4bdba049a3f8d",
+					"index" : 3
+				},
+				{
+					"id" : "eProsima_atomic::@e22257a4bdba049a3f8d",
+					"index" : 0
+				}
+			],
+			"paths" : 
+			[
+				"lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/src/cpp/CMakeFiles/Export/c96f171e5a3ff9214735fc841243948a/fastrtps-static-targets.cmake"
+			],
+			"type" : "export"
+		},
+		{
+			"backtrace" : 7,
+			"component" : "cmake",
+			"destination" : "share/fastrtps/cmake",
+			"paths" : 
+			[
+				"lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/cmake/config/fastrtps-config.cmake",
+				"lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/cmake/config/fastrtps-config-version.cmake"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/src/cpp",
+		"source" : "lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/src/cpp"
+	}
+}

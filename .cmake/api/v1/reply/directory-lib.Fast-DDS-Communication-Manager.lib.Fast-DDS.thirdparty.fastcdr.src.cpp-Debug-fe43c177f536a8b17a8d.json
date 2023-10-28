@@ -1,0 +1,133 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install",
+			"set_public_headers_directory",
+			"set_public_header"
+		],
+		"files" : 
+		[
+			"lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/thirdparty/fastcdr/cmake/dev/set_sources.cmake",
+			"lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/thirdparty/fastcdr/src/cpp/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 102,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 25,
+				"parent" : 1
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 108,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 39,
+				"parent" : 3
+			},
+			{
+				"command" : 0,
+				"file" : 1,
+				"line" : 161,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 1,
+				"line" : 177,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 1,
+				"line" : 227,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 2,
+			"component" : "headers",
+			"destination" : "include",
+			"paths" : 
+			[
+				"lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/thirdparty/fastcdr/include/fastcdr"
+			],
+			"type" : "directory"
+		},
+		{
+			"backtrace" : 4,
+			"component" : "headers",
+			"destination" : "include/fastcdr",
+			"paths" : 
+			[
+				"lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/thirdparty/fastcdr/include/fastcdr/config.h"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 5,
+			"component" : "libraries",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/thirdparty/fastcdr/src/cpp/libfastcdr.a"
+			],
+			"targetId" : "fastcdr::@3b5a9a9ee24fada2bd3c",
+			"targetIndex" : 2,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 6,
+			"component" : "cmake",
+			"destination" : "lib/cmake/fastcdr",
+			"exportName" : "fastcdr-static-targets",
+			"exportTargets" : 
+			[
+				{
+					"id" : "fastcdr::@3b5a9a9ee24fada2bd3c",
+					"index" : 2
+				}
+			],
+			"paths" : 
+			[
+				"lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/thirdparty/fastcdr/src/cpp/CMakeFiles/Export/999e292e87d4be405fddf467474af1dc/fastcdr-static-targets.cmake"
+			],
+			"type" : "export"
+		},
+		{
+			"backtrace" : 7,
+			"component" : "cmake",
+			"destination" : "lib/cmake/fastcdr",
+			"paths" : 
+			[
+				"lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/thirdparty/fastcdr/cmake/config/fastcdr-config.cmake",
+				"lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/thirdparty/fastcdr/cmake/config/fastcdr-config-version.cmake"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/thirdparty/fastcdr/src/cpp",
+		"source" : "lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/thirdparty/fastcdr/src/cpp"
+	}
+}

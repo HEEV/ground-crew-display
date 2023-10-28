@@ -1,0 +1,67 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/thirdparty/optionparser/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 41,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 56,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "libraries",
+			"destination" : "include/fastdds/thirdparty",
+			"paths" : 
+			[
+				"lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/thirdparty/optionparser"
+			],
+			"type" : "directory"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "libraries",
+			"destination" : "share/GroundCrewDisplay/cmake",
+			"exportName" : "optionparser-targets",
+			"exportTargets" : 
+			[
+				{
+					"id" : "optionparser::@fabe7c225b28b08b7fd1",
+					"index" : 0
+				}
+			],
+			"paths" : 
+			[
+				"lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/thirdparty/optionparser/CMakeFiles/Export/5e766f7e4563c9f66d3e4f765c1b8ac0/optionparser-targets.cmake"
+			],
+			"type" : "export"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/thirdparty/optionparser",
+		"source" : "lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/thirdparty/optionparser"
+	}
+}

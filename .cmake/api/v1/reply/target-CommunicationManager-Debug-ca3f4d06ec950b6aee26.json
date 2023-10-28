@@ -1,0 +1,308 @@
+{
+	"archive" : {},
+	"artifacts" : 
+	[
+		{
+			"path" : "lib/Fast-DDS-Communication-Manager/libCommunicationManager.a"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"target_link_libraries",
+			"target_include_directories",
+			"target_sources"
+		],
+		"files" : 
+		[
+			"lib/Fast-DDS-Communication-Manager/CMakeLists.txt",
+			"lib/Fast-DDS-Communication-Manager/src/CMakeLists.txt",
+			"lib/Fast-DDS-Communication-Manager/src/PacketTypes/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 4,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 24,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 6,
+				"parent" : 0
+			},
+			{
+				"file" : 1
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 2,
+				"parent" : 4
+			},
+			{
+				"file" : 2
+			},
+			{
+				"command" : 3,
+				"file" : 2,
+				"line" : 1,
+				"parent" : 6
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g -std=gnu++20 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk -fcolor-diagnostics"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 2,
+					"define" : "FMT_HEADER_ONLY=1"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "FOONATHAN_MEMORY=1"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "FOONATHAN_MEMORY_VERSION_MAJOR=0"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "FOONATHAN_MEMORY_VERSION_MINOR=7"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "FOONATHAN_MEMORY_VERSION_PATCH=3"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 3,
+					"path" : "/Users/arkinsolomon/Documents/ground-crew-display/lib/Fast-DDS-Communication-Manager/src"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/arkinsolomon/Documents/ground-crew-display/lib/Fast-DDS-Communication-Manager/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/arkinsolomon/Documents/ground-crew-display/lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/arkinsolomon/Documents/ground-crew-display/lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/include/fastrtps"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/arkinsolomon/Documents/ground-crew-display/lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/src/cpp"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/arkinsolomon/Documents/ground-crew-display/lib/Fast-DDS-Communication-Manager/lib/Fast-DDS/thirdparty/fastcdr/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/arkinsolomon/Documents/ground-crew-display/lib/Fast-DDS-Communication-Manager/lib/fmt/include"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "/Users/arkinsolomon/Documents/ground-crew-display/lib/Fast-DDS-Communication-Manager/lib/memory/include/foonathan_memory"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "/usr/local/Cellar/openssl@3/3.1.2/include"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					2,
+					2
+				],
+				"standard" : "20"
+			},
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 2,
+			"id" : "fastcdr::@3b5a9a9ee24fada2bd3c"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "fastrtps::@e22257a4bdba049a3f8d"
+		}
+	],
+	"id" : "CommunicationManager::@b8d797db5601c309cd56",
+	"name" : "CommunicationManager",
+	"nameOnDisk" : "libCommunicationManager.a",
+	"paths" : 
+	{
+		"build" : "lib/Fast-DDS-Communication-Manager",
+		"source" : "lib/Fast-DDS-Communication-Manager"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 5,
+			"compileGroupIndex" : 0,
+			"path" : "lib/Fast-DDS-Communication-Manager/src/CommunicationsManager.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 7,
+			"compileGroupIndex" : 0,
+			"path" : "lib/Fast-DDS-Communication-Manager/src/PacketTypes/batteryVoltage.cxx",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 7,
+			"compileGroupIndex" : 0,
+			"path" : "lib/Fast-DDS-Communication-Manager/src/PacketTypes/batteryVoltagePubSubTypes.cxx",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 7,
+			"compileGroupIndex" : 0,
+			"path" : "lib/Fast-DDS-Communication-Manager/src/PacketTypes/carTilt.cxx",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 7,
+			"compileGroupIndex" : 0,
+			"path" : "lib/Fast-DDS-Communication-Manager/src/PacketTypes/carTiltPubSubTypes.cxx",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 7,
+			"compileGroupIndex" : 0,
+			"path" : "lib/Fast-DDS-Communication-Manager/src/PacketTypes/engineTemp.cxx",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 7,
+			"compileGroupIndex" : 0,
+			"path" : "lib/Fast-DDS-Communication-Manager/src/PacketTypes/engineTempPubSubTypes.cxx",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 7,
+			"compileGroupIndex" : 0,
+			"path" : "lib/Fast-DDS-Communication-Manager/src/PacketTypes/GPSPosition.cxx",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 7,
+			"compileGroupIndex" : 0,
+			"path" : "lib/Fast-DDS-Communication-Manager/src/PacketTypes/GPSPositionPubSubTypes.cxx",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 7,
+			"compileGroupIndex" : 0,
+			"path" : "lib/Fast-DDS-Communication-Manager/src/PacketTypes/header.cxx",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 7,
+			"compileGroupIndex" : 0,
+			"path" : "lib/Fast-DDS-Communication-Manager/src/PacketTypes/headerPubSubTypes.cxx",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 7,
+			"compileGroupIndex" : 0,
+			"path" : "lib/Fast-DDS-Communication-Manager/src/PacketTypes/wheelData.cxx",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 7,
+			"compileGroupIndex" : 0,
+			"path" : "lib/Fast-DDS-Communication-Manager/src/PacketTypes/wheelDataPubSubTypes.cxx",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 7,
+			"compileGroupIndex" : 0,
+			"path" : "lib/Fast-DDS-Communication-Manager/src/PacketTypes/windSpeed.cxx",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 7,
+			"compileGroupIndex" : 0,
+			"path" : "lib/Fast-DDS-Communication-Manager/src/PacketTypes/windSpeedPubSubTypes.cxx",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "STATIC_LIBRARY"
+}
